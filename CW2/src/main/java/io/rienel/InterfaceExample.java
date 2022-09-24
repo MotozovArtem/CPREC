@@ -24,16 +24,13 @@ public class InterfaceExample {
         speekables.add(new Dog());
         speekables.add(new Cat());
         speekables.add(new Fish());
-//        speekables.add(new Speekable() {
-//            @Override
-//            public String sayLine() {
-//                return "АРТЕМ ГОВОРИТ МИРУ МИР";
-//            }
-//        });
-//        speekables.add(()-> {
-//            return "Вау, вот это лямбды";
-//        });
-//        speekables.add(()-> "Можно еще проще?");
+        speekables.add(new Speekable() {
+            @Override
+            public String sayLine() {
+                return "Anonymus ДУРАК!!!";
+            }
+        });
+        speekables.add(()-> "Можно еще проще!!!");
         for (Speekable speekable: speekables) {
             System.out.println(speekable.sayLine());
         }
