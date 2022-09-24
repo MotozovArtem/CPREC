@@ -1,14 +1,5 @@
 package io.rienel;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-/**
- * todo armotozov
- *
- * @author Artem Motozov
- * @since ${YEAR}.${MONTH}.${DAY}
- */
 public class MainThreadExample {
     public static void main(String[] args) throws InterruptedException {
 //        double sum = 0.0;

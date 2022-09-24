@@ -10,12 +10,6 @@ import io.rienel.model.Terminator;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * todo armotozov
- *
- * @author Artem Motozov
- * @since 2022.09.23
- */
 public class InterfaceExample {
     public static void main(String[] args) {
         List<Speekable> speekables = new ArrayList<>();
@@ -27,10 +21,10 @@ public class InterfaceExample {
         speekables.add(new Speekable() {
             @Override
             public String sayLine() {
-                return "Anonymus ДУРАК!!!";
+                return "КРАСНЫЙ КАНДИБОБЁР";
             }
         });
-        speekables.add(()-> "Можно еще проще!!!");
+        speekables.add(() -> "А ЧТО ТАК МОЖНО БЫЛО?");
         for (Speekable speekable: speekables) {
             System.out.println(speekable.sayLine());
         }

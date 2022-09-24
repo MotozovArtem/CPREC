@@ -20,18 +20,10 @@ import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- * todo armotozov
- *
- * @author Artem Motozov
- * @since 2022.09.24
- */
 public class Main {
-//    private static final Logger log = LoggerFactory.getLogger(Main.class);
-//
+
     static class LocalDateSerializer implements JsonSerializer<LocalDate> {
 
         public JsonElement serialize(LocalDate date, Type typeOfSrc, JsonSerializationContext context) {
@@ -74,17 +66,17 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        log.info("Hello world");
-        try (FileReader reader = new FileReader(new File("src/main/resources/stuff.json"))) {
-            List<Stuff> stuffList = gson.fromJson(reader, new TypeToken<List<Stuff>>(){}.getType());
-            log.info(stuffList.toString());
+        log.info("Hello world!!!");
+        try(FileReader reader = new FileReader(new File("src/main/resources/stuff.json"))) {
+            List<Stuff> stuffList = gson.fromJson(reader,
+                    new TypeToken<List<Stuff>>(){}.getType());
             if (validate(stuffList)) {
                 log.info("Data Valid");
             } else {
                 log.info("Data Invalid");
             }
         } catch (IOException e) {
-            log.error("File error: ", e);
+            log.error("File system exception", e);
         }
     }
 
@@ -102,20 +94,4 @@ public class Main {
         return true;
     }
 
-//    public static boolean validate(List<Stuff> stuffs) {
-//        for (Stuff stuff : stuffs) {
-//            if (stuff.getName() == null) {
-//                return false;
-//            }
-//            if (stuff.getPatronymic() == null)
-//                return false;
-//            if (stuff.getSurname() == null) {
-//                return false;
-//            }
-//            if (stuff.getSalary() < 0) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 }
