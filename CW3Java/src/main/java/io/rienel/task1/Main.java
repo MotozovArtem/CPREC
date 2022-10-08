@@ -1,9 +1,15 @@
-package io.rienel;
+package io.rienel.task1;
+
+import io.rienel.task1.model.Client;
+import io.rienel.task1.model.Offer;
+import io.rienel.task1.model.Position;
+import io.rienel.task1.model.Stuff;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +17,7 @@ import java.util.UUID;
 
 public class Main {
 
+    // region
     private static final List<String> maleSurnameList = List.of("Иванов", "Петров", "Сидоров", "Михайлов", "Белоусов", "Козлов", "Мотозов", "Мельников");
     private static final List<String> maleNameList = List.of("Иван", "Петр", "Артем", "Михаил", "Илья", "Алексей", "Александр", "Сергей", "Кирилл");
     private static final List<String> malePatronymicList = List.of("Иванович", "Петрович", "Артемович", "Михайлович", "Ильич", "Алексеевич", "Александрович", "Сергеевич", "Кириллович");
@@ -23,8 +30,8 @@ public class Main {
         return (int)((Math.random() * (max - min)) + min);
     }
 
-    public static void main(String[] args) throws IOException {
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    public static void generateNewStuffData() {
+        //        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 //        while(true) {
 //            String readedLine = reader.readLine();
 //            System.out.println(readedLine);
@@ -61,5 +68,31 @@ public class Main {
         } catch (IOException e) {
 
         }
+    }
+    //endregion
+
+    public static void main(String[] args) throws IOException {
+        OfferService service = LeasingOfferService.getInstance();
+        Client client = new Client.Builder()
+                .setId(UUID.randomUUID())
+                .setSurname("Мотозов")
+                .setName("Артем")
+                .setPatronymic("Владимирович")
+                .setPhone("88005553535")
+                .setSex(false)
+                .setPassportSerial("8888444444")
+                .setBirthDate(LocalDate.of(1998, 2, 24))
+                .build();
+        Stuff stuff = new Stuff.Builder()
+                .setId(UUID.randomUUID())
+                .setSex(false)
+                .setSurname("Иванов")
+                .setName("Иван")
+                .setPatronymic("Иванович")
+                .setSalaryMultiplier(1.00)
+                .setPosition(new Position(UUID.randomUUID(), "Менеджер", 100000))
+                .build();
+        Offer offer = service.signNewOffer(LocalDateTime.now(), LocalDateTime.now().plusYears(1L), client, stuff);
+        System.out.println(offer);
     }
 }
