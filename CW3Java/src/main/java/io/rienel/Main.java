@@ -23,11 +23,20 @@ public class Main {
         return (int)((Math.random() * (max - min)) + min);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//        while(true) {
+//            String readedLine = reader.readLine();
+//            System.out.println(readedLine);
+//            if (readedLine.equals("exit")) {
+//                break;
+//            }
+//        }
+//        reader.close();
         boolean sex = false; // мужской false, женский true
         Random ran = new Random();
         try (FileWriter outputStream = new FileWriter("Stuff.csv", StandardCharsets.UTF_8)) {
-            outputStream.write("id,surname,name,patronymic,sex,birthDate,salaryMultiplier\n");
+            outputStream.write("id,surname,name,patronymic,sex,birthDate,salary\n");
             for (int i = 0; i < 10_000; i++) {
                 outputStream.write(UUID.randomUUID() + ",");
                 if (!sex) {
@@ -36,7 +45,7 @@ public class Main {
                     outputStream.write(malePatronymicList.get(ran.nextInt(malePatronymicList.size())) + ",");
                     outputStream.write(sex + ",");
                     outputStream.write(isoFormat.format(LocalDate.of(getRandomNumber(1970, 2001), getRandomNumber(1, 13), getRandomNumber(1, 29))) + ",");
-                    outputStream.write(String.format("%.2f", Math.random() + 1));
+                    outputStream.write(String.format("%d", getRandomNumber(20000, 100_000)));
                     sex = true;
                 } else {
                     outputStream.write(femaleSurnameList.get(ran.nextInt(femaleSurnameList.size())) + ",");
@@ -44,7 +53,7 @@ public class Main {
                     outputStream.write(femalePatronymicList.get(ran.nextInt(femalePatronymicList.size())) + ",");
                     outputStream.write(sex + ",");
                     outputStream.write(isoFormat.format(LocalDate.of(getRandomNumber(1970, 2001), getRandomNumber(1, 13), getRandomNumber(1, 29))) + ",");
-                    outputStream.write(String.format("%.2f",  Math.random() + 1));
+                    outputStream.write(String.format("%d", getRandomNumber(20000, 100_000)));
                     sex = false;
                 }
                 outputStream.write("\n");
