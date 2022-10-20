@@ -211,4 +211,8 @@ target
 ## Executables
 *.exe
 
+
+##
+*.vpp.*
+
 # End of https://www.toptal.com/developers/gitignore/api/java,kotlin,gradle,maven,intellij+all,eclipse

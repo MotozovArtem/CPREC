@@ -5,21 +5,27 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class Valute {
+
 	@JacksonXmlProperty(localName = "ID")
 	@NotNull
 	private String id;
+
 	@JacksonXmlProperty(localName = "NumCode")
 	@NotNull
 	private Integer numCode;
+
 	@JacksonXmlProperty(localName = "CharCode")
 	@NotNull
 	private String charCode;
+
 	@JacksonXmlProperty(localName = "Nominal")
 	@NotNull
 	private String nominal;
+
 	@JacksonXmlProperty(localName = "Name")
 	@NotNull
 	private String name;
+
 	@JacksonXmlProperty(localName = "Value")
 	@NotNull
 	private String value;
