@@ -1,25 +1,38 @@
 package io.rienel.dto;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("NotNullFieldNotInitialized")
 public class Valute {
 	@JacksonXmlProperty(localName = "ID")
+	@NotNull
 	private String id;
 	@JacksonXmlProperty(localName = "NumCode")
+	@NotNull
 	private Integer numCode;
 	@JacksonXmlProperty(localName = "CharCode")
+	@NotNull
 	private String charCode;
 	@JacksonXmlProperty(localName = "Nominal")
+	@NotNull
 	private String nominal;
 	@JacksonXmlProperty(localName = "Name")
+	@NotNull
 	private String name;
 	@JacksonXmlProperty(localName = "Value")
+	@NotNull
 	private String value;
 
 	public Valute() {
 	}
 
-	public Valute(String id, Integer numCode, String charCode, String nominal, String name, String value) {
+	public Valute(@NotNull String id,
+	              @NotNull Integer numCode,
+	              @NotNull String charCode,
+	              @NotNull String nominal,
+	              @NotNull String name,
+	              @NotNull String value) {
 		this.id = id;
 		this.numCode = numCode;
 		this.charCode = charCode;
@@ -28,51 +41,51 @@ public class Valute {
 		this.value = value;
 	}
 
-	public String getId() {
+	public @NotNull String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(@NotNull String id) {
 		this.id = id;
 	}
 
-	public Integer getNumCode() {
+	public @NotNull Integer getNumCode() {
 		return numCode;
 	}
 
-	public void setNumCode(Integer numCode) {
+	public void setNumCode(@NotNull Integer numCode) {
 		this.numCode = numCode;
 	}
 
-	public String getCharCode() {
+	public @NotNull String getCharCode() {
 		return charCode;
 	}
 
-	public void setCharCode(String charCode) {
+	public void setCharCode(@NotNull String charCode) {
 		this.charCode = charCode;
 	}
 
-	public String getNominal() {
+	public @NotNull String getNominal() {
 		return nominal;
 	}
 
-	public void setNominal(String nominal) {
+	public void setNominal(@NotNull String nominal) {
 		this.nominal = nominal;
 	}
 
-	public String getName() {
+	public @NotNull String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(@NotNull String name) {
 		this.name = name;
 	}
 
-	public String getValue() {
+	public @NotNull String getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(@NotNull String value) {
 		this.value = value;
 	}
 }

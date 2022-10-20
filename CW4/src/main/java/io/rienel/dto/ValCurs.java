@@ -8,18 +8,22 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("NotNullFieldNotInitialized")
 public class ValCurs {
 	@JacksonXmlProperty(isAttribute = true, localName = "Date")
 	@JsonFormat
 			(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+	@NotNull
 	private Date date;
 
 	@JacksonXmlProperty(isAttribute = true)
+	@NotNull
 	private String name;
 
 	@JacksonXmlProperty(localName = "Valute")
 	@JacksonXmlElementWrapper(useWrapping = false)
-	private List<Valute> valutes;
+	@NotNull
+	private List<Valute> valuteList;
 
 	public ValCurs() {
 	}
@@ -27,30 +31,30 @@ public class ValCurs {
 	public ValCurs(@NotNull Date date, @NotNull String name, @NotNull List<Valute> valutes) {
 		this.date = date;
 		this.name = name;
-		this.valutes = valutes;
+		this.valuteList = valutes;
 	}
 
-	public Date getDate() {
+	public @NotNull Date getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(@NotNull Date date) {
 		this.date = date;
 	}
 
-	public String getName() {
+	public @NotNull String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(@NotNull String name) {
 		this.name = name;
 	}
 
-	public List<Valute> getValutes() {
-		return valutes;
+	public @NotNull List<Valute> getValuteList() {
+		return valuteList;
 	}
 
-	public void setValutes(List<Valute> valutes) {
-		this.valutes = valutes;
+	public void setValuteList(@NotNull List<Valute> valuteList) {
+		this.valuteList = valuteList;
 	}
 }

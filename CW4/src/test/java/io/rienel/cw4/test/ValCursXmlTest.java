@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ValCursXmlTest {
 
-	private XmlMapper mapper = new XmlMapper();
+	private final XmlMapper mapper = new XmlMapper();
 
 	@Test
 	public void readValCursXmlTest() throws URISyntaxException, IOException {
@@ -36,9 +36,10 @@ public class ValCursXmlTest {
 		final String xml = xmlBuilder.toString();
 		ValCurs valCurs = mapper.readValue(xml, ValCurs.class);
 
-		assertEquals(Date.from(LocalDate.of(2002, Month.MARCH, 2).atStartOfDay().toInstant(ZoneOffset.UTC)), valCurs.getDate());
+		assertEquals(Date.from(LocalDate.of(2002, Month.MARCH, 2).atStartOfDay()
+				.toInstant(ZoneOffset.UTC)), valCurs.getDate());
 		assertEquals("Foreign Currency Market", valCurs.getName());
-		assertEquals(17, valCurs.getValutes().size());
+		assertEquals(17, valCurs.getValuteList().size());
 
 	}
 }
