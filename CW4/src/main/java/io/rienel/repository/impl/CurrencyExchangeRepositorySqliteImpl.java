@@ -33,11 +33,11 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		final CurrencyExchange currencyExchange;
 		// SELECT id, \"value\", nominal, currency_name, currency_code, \"date\" FROM currency_exchange WHERE id=?
 		try (PreparedStatement statement = connection.prepareStatement("SELECT " +
-		                                                               CurrencyExchange.COLUMN_ID +
-		                                                               "\"" + CurrencyExchange.COLUMN_VALUE + "\"" +
-		                                                               CurrencyExchange.COLUMN_NOMINAL +
-		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME +
-		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE +
+		                                                               CurrencyExchange.COLUMN_ID + "," +
+		                                                               "\"" + CurrencyExchange.COLUMN_VALUE + "\"" + "," +
+		                                                               CurrencyExchange.COLUMN_NOMINAL + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE + "," +
 		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" +
 		                                                               " FROM " + CurrencyExchange.TABLE_NAME +
 		                                                               " WHERE " + CurrencyExchange.COLUMN_ID + "=?");) {
@@ -68,11 +68,11 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		final List<CurrencyExchange> currencyExchangeList = new ArrayList<>();
 		// SELECT id, \"value\", nominal, currency_name, currency_code, \"date\" FROM currency_exchange
 		try (PreparedStatement statement = connection.prepareStatement("SELECT " +
-		                                                               CurrencyExchange.COLUMN_ID +
-		                                                               "\"" + CurrencyExchange.COLUMN_VALUE + "\"" +
-		                                                               CurrencyExchange.COLUMN_NOMINAL +
-		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME +
-		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE +
+		                                                               CurrencyExchange.COLUMN_ID + "," +
+		                                                               "\"" + CurrencyExchange.COLUMN_VALUE + "\"" + "," +
+		                                                               CurrencyExchange.COLUMN_NOMINAL + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE + "," +
 		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" +
 		                                                               " FROM " + CurrencyExchange.TABLE_NAME);
 		     ResultSet resultSet = statement.executeQuery()) {
@@ -101,12 +101,12 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		final List<CurrencyExchange> currencyExchangeList = new ArrayList<>();
 		// SELECT id, \"value\", nominal, currency_name, currency_code, \"date\" FROM currency_exchange WHERE currency_code=?
 		try (PreparedStatement statement = connection.prepareStatement("SELECT " +
-		                                                               CurrencyExchange.COLUMN_ID +
-		                                                               "\"" + CurrencyExchange.COLUMN_VALUE + "\"" +
-		                                                               CurrencyExchange.COLUMN_NOMINAL +
-		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME +
-		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE +
-		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" +
+		                                                               CurrencyExchange.COLUMN_ID + "," +
+		                                                               "\"" + CurrencyExchange.COLUMN_VALUE + "\"" + "," +
+		                                                               CurrencyExchange.COLUMN_NOMINAL + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE + "," +
+		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" + "," +
 		                                                               " FROM " + CurrencyExchange.TABLE_NAME +
 		                                                               " WHERE " + CurrencyExchange.COLUMN_CURRENCY_CODE + "=?")) {
 			statement.setString(1, currencyCode);
@@ -185,12 +185,12 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 			statement.setInt(1, currency.getId());
 			statement.setDouble(2, currency.getValue());
 			statement.setInt(3, currency.getNominal());
-			statement.setString(4, currency.getCurrencyName());
-			statement.setString(5, currency.getCurrencyCode());
+			statement.setString(4, currency.getCurrencyCode());
+			statement.setString(5, currency.getCurrencyName());
 			statement.setDate(6, new Date(
 							currency.getDate()
 									.toEpochSecond(LocalTime.of(0, 0, 0),
-											ZoneOffset.UTC)
+											ZoneOffset.UTC) * 1000
 					)
 			);
 			rowsInserted = statement.executeUpdate();
@@ -219,15 +219,15 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE + "=?," +
 		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME + "=?," +
 		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" + "=?" +
-		                                                               " WHERE" + CurrencyExchange.COLUMN_ID + "=?")) {
+		                                                               " WHERE " + CurrencyExchange.COLUMN_ID + "=?")) {
 			statement.setDouble(1, currency.getValue());
 			statement.setInt(2, currency.getNominal());
-			statement.setString(3, currency.getCurrencyName());
-			statement.setString(4, currency.getCurrencyCode());
+			statement.setString(3, currency.getCurrencyCode());
+			statement.setString(4, currency.getCurrencyName());
 			statement.setDate(5, new Date(
 							currency.getDate()
 									.toEpochSecond(LocalTime.of(0, 0, 0),
-											ZoneOffset.UTC)
+											ZoneOffset.UTC) * 1000
 					)
 			);
 			statement.setInt(6, currency.getId());

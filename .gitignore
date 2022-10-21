@@ -212,7 +212,10 @@ target
 *.exe
 
 
-##
+## Visual Paradigm
 *.vpp.*
+
+# Database
+*.db
 
 # End of https://www.toptal.com/developers/gitignore/api/java,kotlin,gradle,maven,intellij+all,eclipse

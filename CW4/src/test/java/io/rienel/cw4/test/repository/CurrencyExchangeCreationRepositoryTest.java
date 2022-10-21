@@ -7,7 +7,10 @@ import io.rienel.model.CurrencyExchange;
 import io.rienel.repository.CurrencyExchangeRepository;
 import io.rienel.repository.impl.CurrencyExchangeRepositorySqliteImpl;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CurrencyExchangeCreationRepositoryTest {
 
@@ -30,6 +33,7 @@ public class CurrencyExchangeCreationRepositoryTest {
 
 	@Test
 	public void insertTest() {
-		currencyExchangeRepository.insert(currencyExchange);
+		int insert = currencyExchangeRepository.insert(currencyExchange);
+		assertEquals(1, insert);
 	}
 }
