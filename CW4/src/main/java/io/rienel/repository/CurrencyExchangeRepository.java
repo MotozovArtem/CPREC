@@ -3,17 +3,21 @@ package io.rienel.repository;
 import java.util.List;
 
 import io.rienel.model.CurrencyExchange;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public interface CurrencyExchangeRepository {
-	CurrencyExchange findById(Integer id);
+	@Nullable CurrencyExchange findById(@NotNull Integer id);
 
-	List<CurrencyExchange> findAll();
+	@NotNull List<CurrencyExchange> findAll();
 
-	List<CurrencyExchange> findAllByCode(String currencyCode);
+	@NotNull List<CurrencyExchange> findAllByCode(@NotNull String currencyCode);
 
-	int delete(Integer id);
+	int delete(@NotNull Integer id);
 
-	int insert(CurrencyExchange currency);
+	int deleteAll();
 
-	int update(CurrencyExchange currency);
+	int insert(@NotNull CurrencyExchange currency);
+
+	int update(@NotNull CurrencyExchange currency);
 }

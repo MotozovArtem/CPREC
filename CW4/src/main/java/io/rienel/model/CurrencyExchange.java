@@ -5,6 +5,15 @@ import java.time.LocalDate;
 import org.jetbrains.annotations.NotNull;
 
 public class CurrencyExchange {
+
+	public static final String TABLE_NAME = "currency_exchange";
+	public static final String COLUMN_ID = "id";
+	public static final String COLUMN_VALUE = "value";
+	public static final String COLUMN_NOMINAL = "nominal";
+	public static final String COLUMN_CURRENCY_NAME = "currency_name";
+	public static final String COLUMN_CURRENCY_CODE = "currency_code";
+	public static final String COLUMN_DATE = "date";
+
 	@NotNull
 	private Integer id;
 
@@ -86,5 +95,18 @@ public class CurrencyExchange {
 
 	public void setDate(@NotNull LocalDate date) {
 		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("CurrencyExchange{");
+		sb.append("id=").append(id);
+		sb.append(", value=").append(value);
+		sb.append(", nominal=").append(nominal);
+		sb.append(", currencyName='").append(currencyName).append('\'');
+		sb.append(", currencyCode='").append(currencyCode).append('\'');
+		sb.append(", date=").append(date);
+		sb.append('}');
+		return sb.toString();
 	}
 }

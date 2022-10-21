@@ -1,4 +1,4 @@
-package io.rienel.cw4.test;
+package io.rienel.cw4.test.dto;
 
 import java.io.BufferedReader;
 import java.io.IOException;
