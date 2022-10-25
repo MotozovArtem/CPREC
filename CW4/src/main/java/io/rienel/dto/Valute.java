@@ -1,6 +1,8 @@
 package io.rienel.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import io.rienel.util.DoubleDeserializer;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("NotNullFieldNotInitialized")
@@ -20,15 +22,16 @@ public class Valute {
 
 	@JacksonXmlProperty(localName = "Nominal")
 	@NotNull
-	private String nominal;
+	private Integer nominal;
 
 	@JacksonXmlProperty(localName = "Name")
 	@NotNull
 	private String name;
 
 	@JacksonXmlProperty(localName = "Value")
+	@JsonDeserialize(using = DoubleDeserializer.class)
 	@NotNull
-	private String value;
+	private Double value;
 
 	public Valute() {
 	}
@@ -36,9 +39,9 @@ public class Valute {
 	public Valute(@NotNull String id,
 	              @NotNull Integer numCode,
 	              @NotNull String charCode,
-	              @NotNull String nominal,
+	              @NotNull Integer nominal,
 	              @NotNull String name,
-	              @NotNull String value) {
+	              @NotNull Double value) {
 		this.id = id;
 		this.numCode = numCode;
 		this.charCode = charCode;
@@ -71,11 +74,11 @@ public class Valute {
 		this.charCode = charCode;
 	}
 
-	public @NotNull String getNominal() {
+	public @NotNull Integer getNominal() {
 		return nominal;
 	}
 
-	public void setNominal(@NotNull String nominal) {
+	public void setNominal(@NotNull Integer nominal) {
 		this.nominal = nominal;
 	}
 
@@ -87,11 +90,11 @@ public class Valute {
 		this.name = name;
 	}
 
-	public @NotNull String getValue() {
+	public @NotNull Double getValue() {
 		return value;
 	}
 
-	public void setValue(@NotNull String value) {
+	public void setValue(@NotNull Double value) {
 		this.value = value;
 	}
 }

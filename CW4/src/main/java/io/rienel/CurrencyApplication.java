@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import io.rienel.database.Database;
+import io.rienel.ui.MainForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,9 +22,7 @@ public class CurrencyApplication {
 	public static void main(String[] args) {
 		log.info("{} started", APP_NAME);
 		onStart();
-		JFrame app = new JFrame(APP_NAME);
-		app.setSize(400, 600);
-		app.setLayout(null);
+		JFrame app = new MainForm(APP_NAME);
 		app.setVisible(true);
 	}
 
