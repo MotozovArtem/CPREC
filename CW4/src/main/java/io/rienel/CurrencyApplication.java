@@ -14,9 +14,10 @@ import org.slf4j.LoggerFactory;
 public class CurrencyApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(CurrencyApplication.class);
+	private static final String USER_HOME = System.getProperty("user.home");
 
-	private static final String APP_NAME = "Currency Viewer";
-
+	public static final String APP_NAME = "Currency Viewer";
+	public static final Path USER_HOME_PATH = Paths.get(USER_HOME != null ? USER_HOME: "./");
 	public static final Path APP_DB_PATH = Paths.get("db");
 
 	public static void main(String[] args) {
