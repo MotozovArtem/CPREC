@@ -1,4 +1,4 @@
-package io.rienel.ui.action;
+package io.rienel.view.action;
 
 import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;

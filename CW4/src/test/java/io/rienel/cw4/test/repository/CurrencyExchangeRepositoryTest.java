@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CurrencyExchangeRepositoryTest {
-	private final CurrencyExchangeRepository currencyExchangeRepository = new CurrencyExchangeRepositorySqliteImpl();
+	private final CurrencyExchangeRepository currencyExchangeRepository = CurrencyExchangeRepositorySqliteImpl.getInstance();
 
 	private final CurrencyExchange currencyExchange1 = new CurrencyExchange(
 			1,
@@ -35,13 +35,13 @@ public class CurrencyExchangeRepositoryTest {
 
 	@BeforeEach
 	public void initDb() {
-		new CurrencyExchangeRepositorySqliteImpl().insert(currencyExchange1);
-		new CurrencyExchangeRepositorySqliteImpl().insert(currencyExchange2);
+		CurrencyExchangeRepositorySqliteImpl.getInstance().insert(currencyExchange1);
+		CurrencyExchangeRepositorySqliteImpl.getInstance().insert(currencyExchange2);
 	}
 
 	@AfterEach
 	public void clearDb() {
-		new CurrencyExchangeRepositorySqliteImpl().deleteAll();
+		CurrencyExchangeRepositorySqliteImpl.getInstance().deleteAll();
 		Database.getInstance().closeConnection();
 	}
 

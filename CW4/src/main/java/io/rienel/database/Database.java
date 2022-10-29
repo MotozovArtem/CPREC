@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class Database {
+
 	private static final Logger log = LoggerFactory.getLogger(Database.class);
 
 	private static Database instance;
@@ -35,7 +36,9 @@ public final class Database {
 
 	public static Database getInstance() {
 		if (instance == null) {
+			log.debug("Initializing...");
 			instance = new Database();
+			log.debug("Initialized...");
 		}
 		return instance;
 	}

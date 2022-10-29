@@ -1,4 +1,4 @@
-package io.rienel.ui.action;
+package io.rienel.view.action;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import io.rienel.CurrencyApplication;
-import io.rienel.ui.util.CsvFileFilter;
+import io.rienel.view.util.CsvFileFilter;
 
 public class ExportToCSVAction extends AbstractAction {
 

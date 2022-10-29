@@ -1,4 +1,4 @@
-package io.rienel.ui;
+package io.rienel.view;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -7,10 +7,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import io.rienel.ui.action.AboutAction;
-import io.rienel.ui.action.ExitAction;
-import io.rienel.ui.action.ExportToCSVAction;
-import io.rienel.ui.action.ExportToJsonAction;
+import io.rienel.controller.CentralBankOfRussiaCurrencyExchangeController;
+import io.rienel.controller.CurrencyExchangeController;
+import io.rienel.view.action.AboutAction;
+import io.rienel.view.action.ExitAction;
+import io.rienel.view.action.ExportToCSVAction;
+import io.rienel.view.action.ExportToJsonAction;
 
 public class MainForm extends JFrame {
 
@@ -24,9 +26,12 @@ public class MainForm extends JFrame {
 	private final JMenu helpMenu;
 	private final JMenuItem aboutMenuItem;
 
+	private final CurrencyExchangeController currencyExchangeController;
 
 	public MainForm(String title) {
 		super(title);
+
+		currencyExchangeController = CentralBankOfRussiaCurrencyExchangeController.getInstance();
 
 		menuBar = new JMenuBar();
 		fileMenu = new JMenu("File");

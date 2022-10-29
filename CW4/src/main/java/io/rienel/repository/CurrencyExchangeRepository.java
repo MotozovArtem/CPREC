@@ -1,5 +1,6 @@
 package io.rienel.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import io.rienel.model.CurrencyExchange;
@@ -13,6 +14,8 @@ public interface CurrencyExchangeRepository {
 
 	@NotNull List<CurrencyExchange> findAllByCode(@NotNull String currencyCode);
 
+	@NotNull List<CurrencyExchange> findAllByDate(@NotNull LocalDate date);
+
 	int delete(@NotNull Integer id);
 
 	int deleteAll();
@@ -20,4 +23,6 @@ public interface CurrencyExchangeRepository {
 	int insert(@NotNull CurrencyExchange currency);
 
 	int update(@NotNull CurrencyExchange currency);
+
+	boolean existsWithDate(@NotNull LocalDate date);
 }

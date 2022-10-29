@@ -1,4 +1,4 @@
-package io.rienel.ui.util;
+package io.rienel.view.util;
 
 import java.util.List;
 

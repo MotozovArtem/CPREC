@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -23,7 +24,23 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 
 	private static final Logger log = LoggerFactory.getLogger(CurrencyExchangeRepositorySqliteImpl.class);
 
-	private final Database database = Database.getInstance();
+	private static CurrencyExchangeRepository instance;
+
+	private CurrencyExchangeRepositorySqliteImpl() {
+		// do nothing
+		database = Database.getInstance();
+	}
+
+	public static CurrencyExchangeRepository getInstance() {
+		if (instance == null) {
+			log.debug("Initializing...");
+			instance = new CurrencyExchangeRepositorySqliteImpl();
+			log.debug("Initialized...");
+		}
+		return instance;
+	}
+
+	private final Database database;
 
 	@Override
 	public @Nullable CurrencyExchange findById(@NotNull Integer id) {
@@ -106,10 +123,47 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		                                                               CurrencyExchange.COLUMN_NOMINAL + "," +
 		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME + "," +
 		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE + "," +
-		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" + "," +
+		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" +
 		                                                               " FROM " + CurrencyExchange.TABLE_NAME +
 		                                                               " WHERE " + CurrencyExchange.COLUMN_CURRENCY_CODE + "=?")) {
 			statement.setString(1, currencyCode);
+			ResultSet resultSet = statement.executeQuery();
+			final CurrencyExchange currencyExchange = new CurrencyExchange();
+			while (resultSet.next()) {
+				currencyExchange.setId(resultSet.getInt(CurrencyExchange.COLUMN_ID)); // id
+				currencyExchange.setValue(resultSet.getDouble(CurrencyExchange.COLUMN_VALUE)); // value
+				currencyExchange.setNominal(resultSet.getInt(CurrencyExchange.COLUMN_NOMINAL)); // nominal
+				currencyExchange.setCurrencyName(resultSet.getString(CurrencyExchange.COLUMN_CURRENCY_NAME)); // currency_name
+				currencyExchange.setCurrencyCode(resultSet.getString(CurrencyExchange.COLUMN_CURRENCY_CODE)); // currency_code
+				currencyExchange.setDate(resultSet.getDate(CurrencyExchange.COLUMN_DATE).toLocalDate()); // date
+				currencyExchangeList.add(currencyExchange);
+			}
+			resultSet.close();
+		} catch (SQLException e) {
+			log.error("Error while requesting CurrencyExchange", e);
+			throw new RuntimeException(e);
+		}
+		return currencyExchangeList;
+	}
+
+	@Override
+	public @NotNull List<CurrencyExchange> findAllByDate(@NotNull LocalDate date) {
+		Objects.requireNonNull(date);
+
+		final Connection connection = database.getConnection();
+		final List<CurrencyExchange> currencyExchangeList = new ArrayList<>();
+		// SELECT id, \"value\", nominal, currency_name, currency_code, \"date\" FROM currency_exchange WHERE "date"=?
+		try (PreparedStatement statement = connection.prepareStatement("SELECT " +
+		                                                               CurrencyExchange.COLUMN_ID + "," +
+		                                                               "\"" + CurrencyExchange.COLUMN_VALUE + "\"" + "," +
+		                                                               CurrencyExchange.COLUMN_NOMINAL + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME + "," +
+		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE + "," +
+		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" +
+		                                                               " FROM " + CurrencyExchange.TABLE_NAME +
+		                                                               " WHERE " + "\"" + CurrencyExchange.COLUMN_DATE + "\"" + "=?")) {
+			statement.setDate(1,
+					new Date(date.toEpochSecond(LocalTime.of(0, 0, 0), ZoneOffset.UTC) * 1000));
 			ResultSet resultSet = statement.executeQuery();
 			final CurrencyExchange currencyExchange = new CurrencyExchange();
 			while (resultSet.next()) {
@@ -173,21 +227,19 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 
 		final Connection connection = database.getConnection();
 		int rowsInserted = 0;
-		// INSERT INTO currency_exchange(id, \"value\", nominal, currency_code, currency_name, "date") VALUES (?,?,?,?,?,?);
+		// INSERT INTO currency_exchange(\"value\", nominal, currency_code, currency_name, "date") VALUES (?,?,?,?,?);
 		try (PreparedStatement statement = connection.prepareStatement("INSERT INTO " +
 		                                                               CurrencyExchange.TABLE_NAME + "(" +
-		                                                               CurrencyExchange.COLUMN_ID + "," +
 		                                                               CurrencyExchange.COLUMN_VALUE + "," +
 		                                                               CurrencyExchange.COLUMN_NOMINAL + "," +
 		                                                               CurrencyExchange.COLUMN_CURRENCY_CODE + "," +
 		                                                               CurrencyExchange.COLUMN_CURRENCY_NAME + "," +
-		                                                               CurrencyExchange.COLUMN_DATE + ") VALUES (?,?,?,?,?,?)")) {
-			statement.setInt(1, currency.getId());
-			statement.setDouble(2, currency.getValue());
-			statement.setInt(3, currency.getNominal());
-			statement.setString(4, currency.getCurrencyCode());
-			statement.setString(5, currency.getCurrencyName());
-			statement.setDate(6, new Date(
+		                                                               CurrencyExchange.COLUMN_DATE + ") VALUES (?,?,?,?,?)")) {
+			statement.setDouble(1, currency.getValue());
+			statement.setInt(2, currency.getNominal());
+			statement.setString(3, currency.getCurrencyCode());
+			statement.setString(4, currency.getCurrencyName());
+			statement.setDate(5, new Date(
 							currency.getDate()
 									.toEpochSecond(LocalTime.of(0, 0, 0),
 											ZoneOffset.UTC) * 1000
@@ -240,5 +292,31 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 			throw new RuntimeException(e);
 		}
 		return rowsUpdated;
+	}
+
+	@Override
+	public boolean existsWithDate(@NotNull LocalDate date) {
+		Objects.requireNonNull(date);
+		final Connection connection = database.getConnection();
+		int count = 0;
+		// SELECT count(id) FROM currency_exchange WHERE date = ?;
+		try (PreparedStatement statement = connection.prepareStatement("SELECT count(" +
+		                                                               CurrencyExchange.COLUMN_ID + ")" +
+		                                                               " FROM " +
+		                                                               CurrencyExchange.TABLE_NAME +
+		                                                               " WHERE " + CurrencyExchange.COLUMN_DATE + "=?");) {
+			statement.setDate(1,
+					new Date(date.toEpochSecond(LocalTime.of(0, 0, 0), ZoneOffset.UTC) * 1000)
+			);
+			ResultSet resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+			resultSet.close();
+		} catch (SQLException e) {
+			log.error("Error while check existing CurrencyExchange with date={}", date, e);
+			throw new RuntimeException(e);
+		}
+		return count != 0;
 	}
 }

@@ -1,4 +1,4 @@
-package io.rienel.ui.util;
+package io.rienel.view.util;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
