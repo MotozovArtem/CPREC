@@ -2,9 +2,11 @@ package io.rienel.http;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import retrofit.RestAdapter;
+import retrofit.converter.JacksonConverter;
 
 public final class CentralBankOfRussia {
 
@@ -23,6 +25,7 @@ public final class CentralBankOfRussia {
 		RestAdapter restAdapter = new RestAdapter.Builder()
 				.setLog(new LogAdapter(log))
 				.setEndpoint(uri)
+				.setConverter(new JacksonConverter(new XmlMapper()))
 				.build();
 
 		return restAdapter.create(CentralBankOfRussianService.class);

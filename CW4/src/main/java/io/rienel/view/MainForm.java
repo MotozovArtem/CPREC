@@ -1,23 +1,34 @@
 package io.rienel.view;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.time.LocalDate;
+import java.util.List;
 
 import io.rienel.controller.CentralBankOfRussiaCurrencyExchangeController;
 import io.rienel.controller.CurrencyExchangeController;
+import io.rienel.model.CurrencyExchange;
 import io.rienel.view.action.AboutAction;
 import io.rienel.view.action.ExitAction;
 import io.rienel.view.action.ExportToCSVAction;
 import io.rienel.view.action.ExportToJsonAction;
+import io.rienel.view.model.CurrencyExchangeTableModel;
 
 public class MainForm extends JFrame {
 
-	private JPanel content;
-	private  JTable currencyTable;
+	private final JPanel content;
+	private final JTable currencyTable;
 	private final JMenuBar menuBar;
 	private final JMenu fileMenu;
 	private final JMenuItem exportToCsvMenuItem;
@@ -25,13 +36,19 @@ public class MainForm extends JFrame {
 	private final JMenuItem exitMenuItem;
 	private final JMenu helpMenu;
 	private final JMenuItem aboutMenuItem;
+	private final JButton updateButton;
 
 	private final CurrencyExchangeController currencyExchangeController;
+
+	private static final int MAIN_FORM_HORIZONTAL_GAP = 10;
+	private static final int MAIN_FORM_VERTICAL_GAP = 10;
 
 	public MainForm(String title) {
 		super(title);
 
 		currencyExchangeController = CentralBankOfRussiaCurrencyExchangeController.getInstance();
+
+		content = new JPanel(new BorderLayout(MAIN_FORM_HORIZONTAL_GAP, MAIN_FORM_VERTICAL_GAP));
 
 		menuBar = new JMenuBar();
 		fileMenu = new JMenu("File");
@@ -54,11 +71,35 @@ public class MainForm extends JFrame {
 		helpMenu.add(aboutMenuItem);
 
 		currencyTable = new JTable();
+		currencyTable.setFillsViewportHeight(true);
+		JScrollPane scrollPane = new JScrollPane(currencyTable);
+		content.add(scrollPane, BorderLayout.CENTER);
+
+		updateButton = new JButton("Update");
+		updateButton.addActionListener(this::onUpdateButtonClick);
+		JPanel updatePanel = new JPanel();
+		BoxLayout boxLayout = new BoxLayout(updatePanel, BoxLayout.LINE_AXIS);
+		updatePanel.setLayout(boxLayout);
+		updatePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+		updatePanel.add(Box.createHorizontalGlue());
+		updatePanel.add(updateButton);
+		updateTableContent();
+		content.add(updatePanel, BorderLayout.NORTH);
 
 		this.setJMenuBar(menuBar);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setContentPane(content);
 		this.pack();
 		this.setSize(500, 700);
+	}
+
+	public void onUpdateButtonClick(ActionEvent e) {
+		currencyExchangeController.updateCurrency(LocalDate.now());
+		updateTableContent();
+	}
+
+	public void updateTableContent() {
+		List<CurrencyExchange> allCurrencyExchanges = currencyExchangeController.getAllCurrencyExchanges();
+		currencyTable.setModel(new CurrencyExchangeTableModel(allCurrencyExchanges));
 	}
 }

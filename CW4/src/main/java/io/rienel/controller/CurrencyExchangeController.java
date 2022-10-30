@@ -10,5 +10,4 @@ public interface CurrencyExchangeController {
 
 	List<CurrencyExchange> getAllCurrencyExchanges();
 
-
 }

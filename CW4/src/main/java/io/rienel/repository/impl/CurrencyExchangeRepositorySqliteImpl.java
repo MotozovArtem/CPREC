@@ -60,7 +60,7 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		                                                               " WHERE " + CurrencyExchange.COLUMN_ID + "=?");) {
 			// JDBC column and parameters starts count from 1
 			statement.setInt(1, id);
-			ResultSet resultSet = statement.executeQuery();
+			final ResultSet resultSet = statement.executeQuery();
 			currencyExchange = new CurrencyExchange();
 			while (resultSet.next()) {
 				// JDBC column and parameters starts count from 1
@@ -93,8 +93,8 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		                                                               "\"" + CurrencyExchange.COLUMN_DATE + "\"" +
 		                                                               " FROM " + CurrencyExchange.TABLE_NAME);
 		     ResultSet resultSet = statement.executeQuery()) {
-			final CurrencyExchange currencyExchange = new CurrencyExchange();
 			while (resultSet.next()) {
+				final CurrencyExchange currencyExchange = new CurrencyExchange();
 				currencyExchange.setId(resultSet.getInt(CurrencyExchange.COLUMN_ID)); // id
 				currencyExchange.setValue(resultSet.getDouble(CurrencyExchange.COLUMN_VALUE)); // value
 				currencyExchange.setNominal(resultSet.getInt(CurrencyExchange.COLUMN_NOMINAL)); // nominal
@@ -128,8 +128,8 @@ public class CurrencyExchangeRepositorySqliteImpl implements CurrencyExchangeRep
 		                                                               " WHERE " + CurrencyExchange.COLUMN_CURRENCY_CODE + "=?")) {
 			statement.setString(1, currencyCode);
 			ResultSet resultSet = statement.executeQuery();
-			final CurrencyExchange currencyExchange = new CurrencyExchange();
 			while (resultSet.next()) {
+				final CurrencyExchange currencyExchange = new CurrencyExchange();
 				currencyExchange.setId(resultSet.getInt(CurrencyExchange.COLUMN_ID)); // id
 				currencyExchange.setValue(resultSet.getDouble(CurrencyExchange.COLUMN_VALUE)); // value
 				currencyExchange.setNominal(resultSet.getInt(CurrencyExchange.COLUMN_NOMINAL)); // nominal

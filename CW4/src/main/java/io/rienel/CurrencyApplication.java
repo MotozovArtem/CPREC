@@ -1,6 +1,8 @@
 package io.rienel;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,14 +19,23 @@ public class CurrencyApplication {
 	private static final String USER_HOME = System.getProperty("user.home");
 
 	public static final String APP_NAME = "Currency Viewer";
-	public static final Path USER_HOME_PATH = Paths.get(USER_HOME != null ? USER_HOME: "./");
+	public static final String APP_VERSION = "1.0-SNAPSHOT";
+	public static final String APP_FULL_NAME = String.format("%s v.%s", APP_NAME, APP_VERSION);
+	public static final Path USER_HOME_PATH = Paths.get(USER_HOME != null ? USER_HOME : "./");
 	public static final Path APP_DB_PATH = Paths.get("db");
 
 	public static void main(String[] args) {
 		log.info("{} started", APP_NAME);
+		log.info("Version: {}", APP_VERSION);
 		onStart();
-		JFrame app = new MainForm(APP_NAME);
+		JFrame app = new MainForm(APP_FULL_NAME);
 		app.setVisible(true);
+		app.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				onClose();
+			}
+		});
 	}
 
 	public static void onStart() {
