@@ -80,7 +80,7 @@ public class MainForm extends JFrame {
 		JPanel updatePanel = new JPanel();
 		BoxLayout boxLayout = new BoxLayout(updatePanel, BoxLayout.LINE_AXIS);
 		updatePanel.setLayout(boxLayout);
-		updatePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
+		updatePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 5));
 		updatePanel.add(Box.createHorizontalGlue());
 		updatePanel.add(updateButton);
 		updateTableContent();
