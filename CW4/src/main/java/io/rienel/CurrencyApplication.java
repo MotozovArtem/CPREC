@@ -1,6 +1,7 @@
 package io.rienel;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -8,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import io.rienel.database.Database;
 import io.rienel.view.MainForm;
 import org.slf4j.Logger;
@@ -46,6 +48,12 @@ public class CurrencyApplication {
 				log.error("Cannot create application database directory {}", APP_DB_PATH.toAbsolutePath());
 				throw new RuntimeException(e);
 			}
+		}
+
+		try {
+			UIManager.setLookAndFeel(new FlatIntelliJLaf());
+		} catch (Exception e) {
+			log.error("Failed to initialize LaF", e);
 		}
 	}
 

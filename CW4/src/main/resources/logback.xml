@@ -28,12 +28,11 @@
     </appender>
 
     <!-- Root logger. Use R appender for trace file logging and (or) C appender for console output.  -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="R"/>
         <appender-ref ref="C"/>
     </root>
 
-    <logger name="com.j256.ormlite" level="ERROR"/>
-    <logger name="io.rienel" level="DEBUG"/>
+    <logger name="io.rienel.*" level="DEBUG"/>
 
 </configuration>

@@ -47,22 +47,15 @@ public final class CurrencyExchangeTableModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		CurrencyExchange currencyExchange = tableData.get(rowIndex);
-		switch (columnIndex) {
-			case 0:
-				return currencyExchange.getId();
-			case 1:
-				return currencyExchange.getValue();
-			case 2:
-				return currencyExchange.getNominal();
-			case 3:
-				return currencyExchange.getCurrencyName();
-			case 4:
-				return currencyExchange.getCurrencyCode();
-			case 5:
-				return currencyExchange.getDate();
-			default:
-				throw new IllegalArgumentException("Unknown argument");
-		}
+		return switch (columnIndex) {
+			case 0 -> currencyExchange.getId();
+			case 1 -> currencyExchange.getValue();
+			case 2 -> currencyExchange.getNominal();
+			case 3 -> currencyExchange.getCurrencyName();
+			case 4 -> currencyExchange.getCurrencyCode();
+			case 5 -> currencyExchange.getDate();
+			default -> throw new IllegalArgumentException("Unknown argument");
+		};
 	}
 
 	@Override

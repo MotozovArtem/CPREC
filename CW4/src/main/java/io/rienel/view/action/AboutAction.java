@@ -22,7 +22,7 @@ public class AboutAction extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		JOptionPane.showMessageDialog(parent, """
                 %s
-                Made by Motozov Artyom
+                Made by Motozov "Rienel" Artyom
                 Sources - https://github.com/MotozovArtyom/CPREC/tree/master/CW4
                 """.formatted(CurrencyApplication.APP_NAME));
 	}

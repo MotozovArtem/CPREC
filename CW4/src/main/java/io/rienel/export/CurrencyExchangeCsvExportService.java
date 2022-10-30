@@ -12,27 +12,27 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CsvExportService implements ExportService {
+public class CurrencyExchangeCsvExportService implements ExportService<CurrencyExchange> {
 
-	private static final Logger log = LoggerFactory.getLogger(CsvExportService.class);
+	private static final Logger log = LoggerFactory.getLogger(CurrencyExchangeCsvExportService.class);
 
-	public static final String COLUMN_ID = "id";
-	public static final String COLUMN_VALUE = "value";
-	public static final String COLUMN_NOMINAL = "nominal";
-	public static final String COLUMN_CURRENCY_NAME = "currency_name";
-	public static final String COLUMN_CURRENCY_CODE = "currency_code";
-	public static final String COLUMN_DATE = "date";
+	private static final String COLUMN_ID = "id";
+	private static final String COLUMN_VALUE = "value";
+	private static final String COLUMN_NOMINAL = "nominal";
+	private static final String COLUMN_CURRENCY_NAME = "currency_name";
+	private static final String COLUMN_CURRENCY_CODE = "currency_code";
+	private static final String COLUMN_DATE = "date";
 
-	private @NotNull CSVFormat csvFormat;
+	private final @NotNull CSVFormat csvFormat;
 
-	public CsvExportService(@NotNull CSVFormat csvFormat) {
+	public CurrencyExchangeCsvExportService(@NotNull CSVFormat csvFormat) {
 		Objects.requireNonNull(csvFormat);
 
 		this.csvFormat = csvFormat;
 	}
 
-	public CsvExportService() {
-		this.csvFormat = CSVFormat.DEFAULT;
+	public CurrencyExchangeCsvExportService() {
+		this(CSVFormat.DEFAULT);
 	}
 
 	private final List<String> header = List.of(COLUMN_ID, COLUMN_VALUE, COLUMN_NOMINAL, COLUMN_CURRENCY_NAME, COLUMN_CURRENCY_CODE, COLUMN_DATE);

@@ -21,7 +21,7 @@ import io.rienel.controller.CurrencyExchangeController;
 import io.rienel.model.CurrencyExchange;
 import io.rienel.view.action.AboutAction;
 import io.rienel.view.action.ExitAction;
-import io.rienel.view.action.ExportToCSVAction;
+import io.rienel.view.action.ExportToCsvAction;
 import io.rienel.view.action.ExportToJsonAction;
 import io.rienel.view.model.CurrencyExchangeTableModel;
 
@@ -54,7 +54,7 @@ public class MainForm extends JFrame {
 		fileMenu = new JMenu("File");
 		menuBar.add(fileMenu);
 		exportToCsvMenuItem = new JMenuItem("Export to CSV");
-		exportToCsvMenuItem.setAction(new ExportToCSVAction(this));
+		exportToCsvMenuItem.setAction(new ExportToCsvAction(this));
 		fileMenu.add(exportToCsvMenuItem);
 		exportToJsonMenuItem = new JMenuItem("Export to JSON");
 		exportToJsonMenuItem.setAction(new ExportToJsonAction(this));

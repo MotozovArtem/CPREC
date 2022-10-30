@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
+import io.rienel.util.FileExtensionUtils;
 import io.rienel.util.Strings;
 
 public abstract class AbstractFileFilter extends FileFilter {

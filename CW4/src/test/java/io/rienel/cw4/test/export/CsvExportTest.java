@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
-import io.rienel.export.CsvExportService;
+import io.rienel.export.CurrencyExchangeCsvExportService;
 import io.rienel.export.ExportService;
 import io.rienel.model.CurrencyExchange;
 import org.junit.jupiter.api.Assertions;
@@ -27,7 +27,7 @@ public class CsvExportTest {
 
 	@Test
 	public void testExportToCsv() {
-		ExportService exportService = new CsvExportService();
+		ExportService<CurrencyExchange> exportService = new CurrencyExchangeCsvExportService();
 		String exportedValue = exportService.export(testCurrencyExchangeList);
 		Assertions.assertEquals(expectedCsv, exportedValue);
 	}

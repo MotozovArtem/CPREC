@@ -13,14 +13,14 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JsonExportService implements ExportService {
+public class CurrencyExchangeJsonExportService implements ExportService<CurrencyExchange> {
 
-	private static final Logger log = LoggerFactory.getLogger(JsonExportService.class);
+	private static final Logger log = LoggerFactory.getLogger(CurrencyExchangeJsonExportService.class);
 
 	private final ObjectMapper objectMapper;
 	private final boolean usePrettier;
 
-	public JsonExportService(boolean usePrettier) {
+	public CurrencyExchangeJsonExportService(boolean usePrettier) {
 		this.objectMapper = new ObjectMapper()
 				.registerModule(new JavaTimeModule())
 				.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)

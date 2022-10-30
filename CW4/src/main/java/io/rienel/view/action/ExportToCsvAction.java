@@ -13,49 +13,49 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import io.rienel.CurrencyApplication;
-import io.rienel.export.CurrencyExchangeJsonExportService;
+import io.rienel.export.CurrencyExchangeCsvExportService;
 import io.rienel.export.ExportService;
 import io.rienel.model.CurrencyExchange;
 import io.rienel.repository.CurrencyExchangeRepository;
 import io.rienel.repository.impl.CurrencyExchangeRepositorySqliteImpl;
-import io.rienel.view.util.JsonFileFilter;
+import io.rienel.view.util.CsvFileFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ExportToJsonAction extends AbstractAction {
+public class ExportToCsvAction extends AbstractAction {
 
-	private static final Logger log = LoggerFactory.getLogger(ExportToJsonAction.class);
-	public static final String DEFAULT_EXPORT_FILE_NAME = String.format("currency_%s.json", LocalDate.now().format(DateTimeFormatter.ISO_DATE));
+	private static final Logger log = LoggerFactory.getLogger(ExportToCsvAction.class);
+	public static final String DEFAULT_EXPORT_FILE_NAME = String.format("currency_%s.csv", LocalDate.now().format(DateTimeFormatter.ISO_DATE));
 
 	private final Component parent;
-	private final ExportService<CurrencyExchange> jsonCurrencyExchangeExportService;
+	private final ExportService<CurrencyExchange> csvCurrencyExportService;
 	private final CurrencyExchangeRepository currencyExchangeRepository;
 
-	public ExportToJsonAction(Component parent) {
-		super("Export to JSON");
+	public ExportToCsvAction(Component parent) {
+		super("Export to CSV");
 		this.parent = parent;
-		this.jsonCurrencyExchangeExportService = new CurrencyExchangeJsonExportService(true);
+		this.csvCurrencyExportService = new CurrencyExchangeCsvExportService();
 		this.currencyExchangeRepository = CurrencyExchangeRepositorySqliteImpl.getInstance();
-		putValue(MNEMONIC_KEY, KeyEvent.VK_J);
+		putValue(MNEMONIC_KEY, KeyEvent.VK_C);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		JFileChooser fileChooser = new JFileChooser(CurrencyApplication.USER_HOME_PATH.toFile());
+		fileChooser.setFileFilter(new CsvFileFilter());
 		fileChooser.setSelectedFile(CurrencyApplication.USER_HOME_PATH.resolve(DEFAULT_EXPORT_FILE_NAME).toFile());
-		fileChooser.setFileFilter(new JsonFileFilter());
 		int returnValue = fileChooser.showSaveDialog(parent);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
-			log.info("Start exporting CurrencyExchange to JSON file");
+			log.info("Start exporting CurrencyExchange to CSV file");
 			File selectedFile = fileChooser.getSelectedFile();
 			List<CurrencyExchange> allCurrencies = currencyExchangeRepository.findAll();
-			String fileContent = jsonCurrencyExchangeExportService.export(allCurrencies);
+			String fileContent = csvCurrencyExportService.export(allCurrencies);
 			try (FileWriter writer = new FileWriter(selectedFile)) {
 				writer.write(fileContent);
 			} catch (IOException e) {
-				log.error("Error while exporting currency exchange to JSON", e);
+				log.error("Error while exporting currency exchange to CSV", e);
 			}
-			log.info("Export to JSON successfully. Exported {} objects", allCurrencies.size());
+			log.info("Export to CSV successfully. Exported {} objects", allCurrencies.size());
 		}
 	}
 }
