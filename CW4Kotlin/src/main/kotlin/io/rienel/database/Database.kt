@@ -10,11 +10,11 @@ import java.sql.DriverManager
 import java.sql.SQLException
 
 object Database {
-    private val log: Logger = LoggerFactory.getLogger(Database::class.java);
+	private val log: Logger = LoggerFactory.getLogger(Database::class.java);
 
-    const val JDBC_URL = "jdbc:sqlite:db/storage.db"
+	const val JDBC_URL = "jdbc:sqlite:db/storage.db"
 
-    private val SCHEMA_SQL: String = """
+	private val SCHEMA_SQL: String = """
 			CREATE TABLE IF NOT EXISTS currency_exchange (
 			    id INTEGER PRIMARY KEY AUTOINCREMENT,
 			    "value" REAL NOT NULL,
@@ -24,52 +24,52 @@ object Database {
 			    "date" DATE
 			);""".trimIndent()
 
-    val connection: Connection
+	val connection: Connection
 
-    init {
-        prepareDirectory()
-        connection = DriverManager.getConnection(JDBC_URL)
-        initDb()
-    }
+	init {
+		prepareDirectory()
+		connection = DriverManager.getConnection(JDBC_URL)
+		initDb()
+	}
 
-    private fun prepareDirectory() {
-        if (!Files.exists(APP_DB_PATH)) {
-            try {
-                Files.createDirectory(APP_DB_PATH)
-            } catch (e: IOException) {
-                log.error(
-                    "Cannot create application database directory {}",
-                    APP_DB_PATH.toAbsolutePath()
-                )
-                throw e
-            }
-        }
-    }
+	private fun prepareDirectory() {
+		if (!Files.exists(APP_DB_PATH)) {
+			try {
+				Files.createDirectory(APP_DB_PATH)
+			} catch (e: IOException) {
+				log.error(
+					"Cannot create application database directory {}",
+					APP_DB_PATH.toAbsolutePath()
+				)
+				throw e
+			}
+		}
+	}
 
-    private fun initDb() {
-        try {
-            connection.prepareStatement(SCHEMA_SQL).use { statement -> statement.execute() }
-        } catch (e: SQLException) {
-            log.error("Cannot create database schema", e)
-            throw e
-        }
-    }
+	private fun initDb() {
+		try {
+			connection.prepareStatement(SCHEMA_SQL).use { statement -> statement.execute() }
+		} catch (e: SQLException) {
+			log.error("Cannot create database schema", e)
+			throw e
+		}
+	}
 
-    fun closeConnection(): Boolean {
-        log.info("Closing connection to database {}", JDBC_URL)
-        try {
-            connection.close()
-        } catch (e: SQLException) {
-            log.error("Cannot close database connection", e)
-            try {
-                // Finally
-                connection.close()
-            } catch (ex: SQLException) {
-                log.error("Cannot finally close database connection", e)
-                throw RuntimeException(ex)
-            }
-            throw RuntimeException(e)
-        }
-        return true
-    }
+	fun closeConnection(): Boolean {
+		log.info("Closing connection to database {}", JDBC_URL)
+		try {
+			connection.close()
+		} catch (e: SQLException) {
+			log.error("Cannot close database connection", e)
+			try {
+				// Finally
+				connection.close()
+			} catch (ex: SQLException) {
+				log.error("Cannot finally close database connection", e)
+				throw RuntimeException(ex)
+			}
+			throw RuntimeException(e)
+		}
+		return true
+	}
 }
