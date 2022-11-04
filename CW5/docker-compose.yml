@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  postgresql-db:
+    container_name: cur_db
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: currencies
