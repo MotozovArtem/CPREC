@@ -15,6 +15,6 @@ public class JsonFileFilter extends AbstractFileFilter {
 
 	@Override
 	public String getDescription() {
-		return "JavaScript Object Notation File";
+		return "JavaScript Object Notation File (*.json)";
 	}
 }

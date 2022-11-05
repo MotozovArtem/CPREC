@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public interface CurrencyExchangeRepository {
-	@Nullable CurrencyExchange findById(@NotNull Integer id);
+	@Nullable CurrencyExchange findById(@NotNull Integer id); // kt: fun findById(id: Int): CurrencyExchange?
 
 	@NotNull List<CurrencyExchange> findAll();
 

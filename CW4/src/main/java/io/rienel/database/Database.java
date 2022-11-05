@@ -26,7 +26,7 @@ public final class Database {
 			    nominal INTEGER NOT NULL,
 			    currency_name VARCHAR(100) NOT NULL,
 			    currency_code VARCHAR(3) NOT NULL,
-			    "date" DATE
+			    "date" DATE NOT NULL
 			);""";
 
 	private Connection connection;

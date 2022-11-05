@@ -10,7 +10,7 @@ public class CsvFileFilter extends AbstractFileFilter {
 
 	@Override
 	public String getDescription() {
-		return "Comma Separated Value File";
+		return "Comma Separated Value File (*.csv)";
 	}
 
 	@Override
