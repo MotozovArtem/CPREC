@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Position(
-    @PrimaryKey val id: String,
+    @PrimaryKey val positionId: String,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "salary") val salary: String,
 )

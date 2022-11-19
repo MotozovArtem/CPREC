@@ -1,12 +1,12 @@
 package io.rienel;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,56 +16,50 @@ import java.util.Locale;
  * @since 11/19/2022
  */
 public class ValuteLoader {
-
-	private static final Integer CSV_COLUMN_ID = 0;
-	private static final Integer CSV_COLUMN_VALUE = 1;
-	private static final Integer CSV_COLUMN_NOMINAL = 2;
-	private static final Integer CSV_COLUMN_CURRENCY_NAME = 3;
-	private static final Integer CSV_COLUMN_CURRENCY_CODE = 4;
-	private static final Integer CSV_COLUMN_DATE = 5;
-
-	public List<Valute> loadValute(String fileName) throws IOException {
+	public List<Valute> loadValute(String filename) throws IOException {
+		if (filename == null) {
+			return new ArrayList<>();
+		}
+		File file = new File(filename);
+		Valute valute;
 		List<Valute> valuteList = new ArrayList<>();
-		boolean isHeader = true;
-
-		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+			boolean isHeader = true;
 			String readedLine = reader.readLine();
-			do {
+			while (readedLine != null) {
 				if (isHeader) {
+					readedLine = reader.readLine();
 					isHeader = false;
 					continue;
 				}
-				Valute valute = parseValute(readedLine);
+				String[] readedLineSplited = readedLine.split(",");
+				valute = parseValute(readedLineSplited);
 				valuteList.add(valute);
-			}while((readedLine = reader.readLine()) != null);
+				readedLine = reader.readLine();
+			}
 		} catch (IOException e) {
-			System.err.println("Error while reading CSV file " + fileName);
 			throw e;
-		} catch (ParseException e) {
-			throw new RuntimeException(e);
+		} catch (ParseException f) {
+			f.printStackTrace();
 		}
 		return valuteList;
 	}
 
-	private Valute parseValute(String readedLine) throws ParseException {
-		Valute valute = new Valute();
-		String[] split = readedLine.split(",");
-		valute.setId(split[CSV_COLUMN_ID]);
-		valute.setValue(Double.parseDouble(split[CSV_COLUMN_VALUE]));
-		valute.setNominal(Integer.parseInt(split[CSV_COLUMN_NOMINAL]));
-		valute.setCurrencyName(split[CSV_COLUMN_CURRENCY_NAME]);
-		valute.setCurrencyCode(split[CSV_COLUMN_CURRENCY_CODE]);
+	private Valute parseValute(String[] readedLineSplited) throws ParseException {
+		Valute valute;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-		Date date = formatter.parse(split[CSV_COLUMN_DATE]);
-		valute.setDate(date);
+		valute = new Valute(
+				readedLineSplited[0],
+				Double.parseDouble(readedLineSplited[1]),
+				Integer.parseInt(readedLineSplited[2]),
+				readedLineSplited[3],
+				readedLineSplited[4],
+				formatter.parse(readedLineSplited[5])
+		);
 		return valute;
 	}
+
+	public List<Valute> loadValuteSorted(String fileName, ValuteColumn valuteColumn, Boolean direction) {
+		return null;
+	}
 }
-
-
-
-
-
-
-
-

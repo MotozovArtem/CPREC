@@ -7,7 +7,7 @@ import java.time.LocalDate
 
 @Entity
 data class Client(
-    @PrimaryKey val id: String,
+    @PrimaryKey val clientId: String,
     @ColumnInfo(name = "surname")         val surname: String,
     @ColumnInfo(name = "name")            val name: String,
     @ColumnInfo(name = "patronymic")      val patronymic: String,

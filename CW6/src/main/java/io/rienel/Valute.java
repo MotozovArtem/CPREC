@@ -1,7 +1,6 @@
 package io.rienel;
 
 import java.util.Date;
-import java.util.Objects;
 
 /**
  * TODO ArMotozov
@@ -19,12 +18,12 @@ public class Valute {
 	public Valute() {
 	}
 
-	public Valute(String id, double value, int nominal, String currencyCode, String currencyName, Date date) {
+	public Valute(String id, double value, int nominal, String currencyName, String currencyCode, Date date) {
 		this.id = id;
 		this.value = value;
 		this.nominal = nominal;
-		this.currencyCode = currencyCode;
 		this.currencyName = currencyName;
+		this.currencyCode = currencyCode;
 		this.date = date;
 	}
 
@@ -74,36 +73,5 @@ public class Valute {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-
-		Valute valute = (Valute)o;
-
-		if (Double.compare(valute.value, value) != 0) return false;
-		if (nominal != valute.nominal) return false;
-		if (!Objects.equals(id, valute.id)) return false;
-		if (!Objects.equals(currencyCode, valute.currencyCode))
-			return false;
-		if (!Objects.equals(currencyName, valute.currencyName))
-			return false;
-		return Objects.equals(date, valute.date);
-	}
-
-	@Override
-	public int hashCode() {
-		int result;
-		long temp;
-		result = id != null ? id.hashCode() : 0;
-		temp = Double.doubleToLongBits(value);
-		result = 31 * result + (int)(temp ^ (temp >>> 32));
-		result = 31 * result + nominal;
-		result = 31 * result + (currencyCode != null ? currencyCode.hashCode() : 0);
-		result = 31 * result + (currencyName != null ? currencyName.hashCode() : 0);
-		result = 31 * result + (date != null ? date.hashCode() : 0);
-		return result;
 	}
 }

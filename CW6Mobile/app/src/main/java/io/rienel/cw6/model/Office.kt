@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Office(
-    @PrimaryKey val id: String,
+    @PrimaryKey val officeId: String,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "address") val address: String,
     @ColumnInfo(name = "law_address") val lawAddress: String,
