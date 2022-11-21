@@ -7,9 +7,12 @@ import java.time.LocalDate
 
 @Entity
 data class Offer(
-    @PrimaryKey val offer_id: String,
-    @ColumnInfo(name = "serial_number") val serialNumber: String,
-    @ColumnInfo(name = "ending_date") val endingDate: LocalDate,
-    @ColumnInfo(name = "sign_date") val signDate: LocalDate,
-    @ColumnInfo(name = "start_date") val startDate: LocalDate,
+    @PrimaryKey val offerId: String,
+    @ColumnInfo(name = "serialNumber") val serialNumber: String,
+    @ColumnInfo(name = "endingDate") val endingDate: LocalDate,
+    @ColumnInfo(name = "signDate") val signDate: LocalDate,
+    @ColumnInfo(name = "startDate") val startDate: LocalDate,
+    @ColumnInfo(name = "clientId") val clientId: String,
+    @ColumnInfo(name = "stuffId") val stuffId: String,
+    @ColumnInfo(name = "officeId") val officeId: String,
 )

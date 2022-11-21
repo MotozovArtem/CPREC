@@ -9,10 +9,11 @@ import java.util.Date;
  */
 public class Valute {
 	private String id;
-	private double value;
+	private double value; // никогда не могут быть null (примитивный тип)
+	// private Double value; // null может быть (ссылочный)
 	private int nominal;
-	private String currencyCode;
 	private String currencyName;
+	private String currencyCode;
 	private Date date;
 
 	public Valute() {
@@ -51,20 +52,20 @@ public class Valute {
 		this.nominal = nominal;
 	}
 
-	public String getCurrencyCode() {
-		return currencyCode;
-	}
-
-	public void setCurrencyCode(String currencyCode) {
-		this.currencyCode = currencyCode;
-	}
-
 	public String getCurrencyName() {
 		return currencyName;
 	}
 
 	public void setCurrencyName(String currencyName) {
 		this.currencyName = currencyName;
+	}
+
+	public String getCurrencyCode() {
+		return currencyCode;
+	}
+
+	public void setCurrencyCode(String currencyCode) {
+		this.currencyCode = currencyCode;
 	}
 
 	public Date getDate() {

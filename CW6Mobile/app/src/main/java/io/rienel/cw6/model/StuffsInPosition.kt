@@ -6,8 +6,8 @@ import androidx.room.Relation
 data class StuffsInPosition(
     @Embedded val position: Position,
     @Relation(
-        parentColumn = "position_id",
-
+        parentColumn = "positionId",
+        entityColumn = "stuffPositionId"
     )
     val stuffs: List<Stuff>
 )

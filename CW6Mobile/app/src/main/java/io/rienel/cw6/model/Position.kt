@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 data class Position(
     @PrimaryKey val positionId: String,
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "salary") val salary: String,
+    @ColumnInfo(name = "salary") val salary: Int,
 )
