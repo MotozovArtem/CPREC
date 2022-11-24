@@ -52,7 +52,7 @@ public class LeasingOfferService implements OfferService {
     }
 
     @Override
-    public Offer signNewOffer(LocalDateTime startDate, LocalDateTime endingDate, Client client, Stuff stuff) {
+    public Offer signNewOffer(LocalDate startDate, LocalDate endingDate, Client client, Stuff stuff) {
         Objects.requireNonNull(startDate);
         Objects.requireNonNull(endingDate);
         Objects.requireNonNull(client);
@@ -64,7 +64,7 @@ public class LeasingOfferService implements OfferService {
                 .setStuff(stuff)
                 .setOffice(office)
                 .setSerialNumber(generateSerialNumber())
-                .setSignDate(LocalDateTime.now())
+                .setSignDate(LocalDate.now())
                 .setEndingDate(endingDate)
                 .setStartDate(startDate);
         Offer offer = offerBuilder.build();
