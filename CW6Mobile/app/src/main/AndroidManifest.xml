@@ -11,8 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.CW6Mobile">
+        android:theme="@style/Theme.CW6Mobile"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.statistic.StatisticActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.client.ClientListActivity"
             android:exported="false" />

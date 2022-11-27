@@ -8,9 +8,16 @@
     <string name="cw6_mobile_client">CW6 Mobile Client</string>
     <string name="new_offer">New Offer</string>
     <string name="offers_count">Offers count:</string>
-    <string name="countStub">123</string>
+    <string name="count_stub">123</string>
     <string name="client_statistic">Client statistic:</string>
     <string name="stuff_statistic">Stuff statistic:</string>
     <string name="a_b_json_stub">{\"a\":\"b\"}</string>
     <string name="client_surnames">Client surnames:</string>
+    <string name="server_ip">Server IP (without http:// and :8080)</string>
+    <string name="server_ip_cannot_be_empty">Server IP cannot be empty</string>
+    <string name="server_ip_default">192.168.0.105</string>
+    <string name="ip_cannot_be_empty">IP cannot be empty</string>
+    <string name="view_statistic">View statistic</string>
+    <string name="dots">…</string>
+    <string name="network_error_check_ip">Error while requesting data from server. Check IP.</string>
 </resources>
