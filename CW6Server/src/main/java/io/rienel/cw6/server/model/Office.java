@@ -17,12 +17,16 @@ public class Office {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
+
 	@Column(name = "name")
 	private String name;
+
 	@Column(name = "address")
 	private String address;
+
 	@Column(name = "law_address")
 	private String lawAddress;
+
 	@Column(name = "cabinets_count")
 	private Integer cabinetsCount;
 

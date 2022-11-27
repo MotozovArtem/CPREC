@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">CW6Mobile</string>
+    <string name="office">Office</string>
+    <string name="offer">Offer</string>
+    <string name="client">Client</string>
+    <string name="stuff">Stuff</string>
+    <string name="position">Position</string>
+    <string name="cw6_mobile_client">CW6 Mobile Client</string>
+    <string name="new_offer">New Offer</string>
+    <string name="offers_count">Offers count:</string>
+    <string name="countStub">123</string>
+    <string name="client_statistic">Client statistic:</string>
+    <string name="stuff_statistic">Stuff statistic:</string>
+    <string name="a_b_json_stub">{\"a\":\"b\"}</string>
+    <string name="client_surnames">Client surnames:</string>
 </resources>

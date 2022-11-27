@@ -20,18 +20,25 @@ public class Stuff {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
+
 	@Column(name = "surname")
 	private String surname;
+
 	@Column(name = "name")
 	private String name;
+
 	@Column(name = "patronymic")
 	private String patronymic;
+
 	@Column(name = "sex")
 	private Boolean sex;
+
 	@Column(name = "birth_date")
 	private LocalDate birthDate;
+
 	@Column(name = "salary_multiplier")
 	private Double salaryMultiplier;
+
 	@ManyToOne(targetEntity = Position.class, optional = false)
 	@JoinColumn(name = "position_id")
 	private Position position;
@@ -39,7 +46,8 @@ public class Stuff {
 	public Stuff() {
 	}
 
-	public Stuff(UUID id, String surname, String name, String patronymic, Boolean sex, LocalDate birthDate, Double salaryMultiplier, Position position) {
+	public Stuff(UUID id, String surname, String name, String patronymic, Boolean sex,
+	             LocalDate birthDate, Double salaryMultiplier, Position position) {
 		this.id = id;
 		this.surname = surname;
 		this.name = name;

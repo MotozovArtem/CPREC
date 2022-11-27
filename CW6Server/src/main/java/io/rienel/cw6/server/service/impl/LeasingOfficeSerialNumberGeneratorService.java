@@ -1,6 +1,6 @@
 package io.rienel.cw6.server.service.impl;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
@@ -21,8 +21,7 @@ public class LeasingOfficeSerialNumberGeneratorService implements SerialNumberGe
 	public String generateSerialNumber() {
 		return String.format("#77%s%s",
 				random.nextInt(),
-				LocalDateTime
-						.now()
+				LocalDate.now()
 						.format(DateTimeFormatter.ISO_DATE)
 						.replace("-", ""));
 	}

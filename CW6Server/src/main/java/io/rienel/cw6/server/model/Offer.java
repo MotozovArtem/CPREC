@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.hibernate.annotations.Type;
@@ -20,20 +20,27 @@ public class Offer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
+
 	@Column(name = "serial_number")
 	private String serialNumber;
+
 	@Column(name = "sign_date")
-	private LocalDateTime signDate;
+	private LocalDate signDate;
+
 	@Column(name = "ending_date")
-	private LocalDateTime endingDate;
+	private LocalDate endingDate;
+
 	@Column(name = "start_date")
-	private LocalDateTime startDate;
+	private LocalDate startDate;
+
 	@ManyToOne(targetEntity = Client.class, optional = false)
 	@JoinColumn(name = "client_id")
 	private Client client;
+
 	@ManyToOne(targetEntity = Office.class, optional = false)
 	@JoinColumn(name = "office_id")
 	private Office office;
+
 	@ManyToOne(targetEntity = Stuff.class, optional = false)
 	@JoinColumn(name = "stuff_id")
 	private Stuff stuff;
@@ -41,7 +48,8 @@ public class Offer {
 	public Offer() {
 	}
 
-	public Offer(UUID id, String serialNumber, LocalDateTime signDate, LocalDateTime endingDate, LocalDateTime startDate, Client client, Office office, Stuff stuff) {
+	public Offer(UUID id, String serialNumber, LocalDate signDate, LocalDate endingDate,
+	             LocalDate startDate, Client client, Office office, Stuff stuff) {
 		this.id = id;
 		this.serialNumber = serialNumber;
 		this.signDate = signDate;
@@ -68,27 +76,27 @@ public class Offer {
 		this.serialNumber = serialNumber;
 	}
 
-	public LocalDateTime getSignDate() {
+	public LocalDate getSignDate() {
 		return signDate;
 	}
 
-	public void setSignDate(LocalDateTime signDate) {
+	public void setSignDate(LocalDate signDate) {
 		this.signDate = signDate;
 	}
 
-	public LocalDateTime getEndingDate() {
+	public LocalDate getEndingDate() {
 		return endingDate;
 	}
 
-	public void setEndingDate(LocalDateTime endingDate) {
+	public void setEndingDate(LocalDate endingDate) {
 		this.endingDate = endingDate;
 	}
 
-	public LocalDateTime getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDateTime startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
@@ -133,9 +141,9 @@ public class Offer {
 	public static class Builder {
 		private UUID id;
 		private String serialNumber;
-		private LocalDateTime signDate;
-		private LocalDateTime endingDate;
-		private LocalDateTime startDate;
+		private LocalDate signDate;
+		private LocalDate endingDate;
+		private LocalDate startDate;
 		private Client client;
 		private Office office;
 		private Stuff stuff;
@@ -163,17 +171,17 @@ public class Offer {
 			return this;
 		}
 
-		public Builder setSignDate(LocalDateTime signDate) {
+		public Builder setSignDate(LocalDate signDate) {
 			this.signDate = signDate;
 			return this;
 		}
 
-		public Builder setEndingDate(LocalDateTime endingDate) {
+		public Builder setEndingDate(LocalDate endingDate) {
 			this.endingDate = endingDate;
 			return this;
 		}
 
-		public Builder setStartDate(LocalDateTime startDate) {
+		public Builder setStartDate(LocalDate startDate) {
 			this.startDate = startDate;
 			return this;
 		}

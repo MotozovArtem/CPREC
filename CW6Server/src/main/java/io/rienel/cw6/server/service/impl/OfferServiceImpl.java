@@ -1,5 +1,6 @@
 package io.rienel.cw6.server.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -35,13 +36,13 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
-	public Offer signNewOffer(LocalDateTime startDate, LocalDateTime endingDate, Client client, Stuff stuff) {
+	public Offer signNewOffer(LocalDate startDate, LocalDate endingDate, Client client, Stuff stuff) {
 		Offer newOffer = new Offer.Builder()
 				.setId(UUID.randomUUID())
 				.setSerialNumber(serialNumberGenerator.generateSerialNumber())
 				.setClient(client)
 				.setStuff(stuff)
-				.setSignDate(LocalDateTime.now())
+				.setSignDate(LocalDate.now())
 				.setStartDate(startDate)
 				.setEndingDate(endingDate)
 				.setOffice(officeRepository.findByName("Head Leasing Office"))

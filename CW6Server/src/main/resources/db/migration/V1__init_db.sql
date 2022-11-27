@@ -43,10 +43,10 @@ ALTER TABLE public.cw6_stuff ADD CONSTRAINT fka7n3xtcu5ndh4mdbd620qo37o FOREIGN 
 
 CREATE TABLE public.cw6_offer (
 	id varchar(255) NOT NULL,
-	ending_date timestamp NULL,
+	ending_date DATE NULL,
 	serial_number varchar(255) NULL,
-	sign_date timestamp NULL,
-	start_date timestamp NULL,
+	sign_date DATE NULL,
+	start_date DATE NULL,
 	client_id varchar(255) NOT NULL,
 	office_id varchar(255) NOT NULL,
 	stuff_id varchar(255) NOT NULL,

@@ -18,20 +18,28 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
+
 	@Column(name = "surname")
 	private String surname;
+
 	@Column(name = "name")
 	private String name;
+
 	@Column(name = "patronymic")
 	private String patronymic;
+
 	@Column(name = "sex")
 	private Boolean sex;
+
 	@Column(name = "birth_date")
 	private LocalDate birthDate;
+
 	@Column(name = "inn")
 	private String inn;
+
 	@Column(name = "passport_serial")
 	private String passportSerial;
+
 	@Column(name = "phone")
 	private String phone;
 

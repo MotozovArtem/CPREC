@@ -17,8 +17,10 @@ public class Position {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
+
 	@Column(name = "name")
 	private String name;
+
 	@Column(name = "salary")
 	private Integer salary;
 

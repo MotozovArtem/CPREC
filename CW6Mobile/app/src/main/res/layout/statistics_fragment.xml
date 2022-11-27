@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".ui.main.StatisticsFragment">
+
+    <TextView
+        android:id="@+id/offerCountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/offers_count"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/offerCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="@string/countStub"
+        app:layout_constraintStart_toEndOf="@+id/offerCountLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clientStatisticLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/client_statistic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/offerCountLabel" />
+
+    <TextView
+        android:id="@+id/stuffStatisticLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/stuff_statistic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientStatisticLabel" />
+
+    <TextView
+        android:id="@+id/clientStatistic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/a_b_json_stub"
+        app:layout_constraintStart_toEndOf="@+id/clientStatisticLabel"
+        app:layout_constraintTop_toBottomOf="@+id/offerCount" />
+
+    <TextView
+        android:id="@+id/stuffStatistic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/a_b_json_stub"
+        app:layout_constraintStart_toEndOf="@+id/stuffStatisticLabel"
+        app:layout_constraintTop_toBottomOf="@+id/clientStatistic" />
+
+    <TextView
+        android:id="@+id/clientSurnamesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/client_surnames"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stuffStatisticLabel" />
+
+    <TextView
+        android:id="@+id/clientSurnames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/a_b_json_stub"
+        app:layout_constraintStart_toEndOf="@+id/clientSurnamesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/stuffStatistic" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

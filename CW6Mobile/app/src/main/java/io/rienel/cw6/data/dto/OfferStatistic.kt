@@ -1,7 +1,12 @@
 package io.rienel.cw6.data.dto
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 data class OfferStatistic(
-	val stuffStatistics: Map<String, Int>,
-	val clientStatistics: Map<String, Int>,
-	val clientSurnames: Set<String>
+	@JsonProperty("stuff_statistics")
+	val stuffStatistics: Map<String, Int>? = null,
+	@JsonProperty("client_statistics")
+	val clientStatistics: Map<String, Int>? = null,
+	@JsonProperty("client_surnames")
+	val clientSurnames: Set<String>? = null
 )
