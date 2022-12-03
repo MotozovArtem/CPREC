@@ -1,4 +1,4 @@
-package io.rienel.cw6.ui.client
+package io.rienel.cw6.ui.data.position
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import io.rienel.cw6.R
 
-class ClientListFragment : Fragment() {
+class PositionListFragment : Fragment() {
 
 	companion object {
-		fun newInstance() = ClientListFragment()
+		fun newInstance() = PositionListFragment()
 	}
 
-	private lateinit var viewModel: ClientListViewModel
+	private lateinit var viewModel: PositionListViewModel
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
-	): View {
-		return inflater.inflate(R.layout.client_list_fragment, container, false)
+	): View? {
+		return inflater.inflate(R.layout.position_list_fragment, container, false)
 	}
 
 	override fun onActivityCreated(savedInstanceState: Bundle?) {
 		super.onActivityCreated(savedInstanceState)
-		viewModel = ViewModelProvider(this).get(ClientListViewModel::class.java)
+		viewModel = ViewModelProvider(this).get(PositionListViewModel::class.java)
 		// TODO: Use the ViewModel
 	}
 

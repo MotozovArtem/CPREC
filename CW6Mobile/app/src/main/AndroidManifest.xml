@@ -14,10 +14,16 @@
         android:theme="@style/Theme.CW6Mobile"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.data.DataViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.data.offer.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.statistic.StatisticActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.client.ClientListActivity"
+            android:name="io.rienel.cw6.ui.data.client.ClientListActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"

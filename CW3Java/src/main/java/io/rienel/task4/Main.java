@@ -1,12 +1,14 @@
 package io.rienel.task4;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,6 +21,10 @@ public class Main {
     private static final int SEX_COLUMN_INDEX = 4;
     private static final int BIRTH_DATE_COLUMN_INDEX = 5;
     private static final int SALARY_COLUMN_INDEX = 6;
+
+    public void foreachSum(List<?> numList) {
+    }
+
 
     public static List<Stuff> readDataFromFile(String fileName) {
         List<Stuff> stuffList = new ArrayList<>();
@@ -50,47 +56,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        List<Stuff> stuffList = readDataFromFile("Stuff.csv");
-        long ivansCount = stuffList.stream()
-                .map(s -> s.getName()) // .map(Stuff::getName)
-                .filter(n -> n.equals("Иван"))
-                .count();
-        System.out.println("Иванов в компании: " + ivansCount);
-
-        long femaleCount = stuffList.stream()
-                .map(s -> s.getSex())
-                .filter(s -> s)
-                .count();
-        System.out.println("Женщин в компании: " + femaleCount);
-
-        long maleCount = stuffList.stream()
-                .map(s -> s.getSex())
-                .filter(s -> !s)
-                .count();
-        System.out.println("Мужчин в компании: " + maleCount);
-
-        long septembersBirths = stuffList.stream()
-                .map(s -> s.getBirthDate().getMonth())
-                .filter(m -> m == Month.SEPTEMBER)
-                .count();
-        System.out.println("Родилось в сентябре: " + septembersBirths);
-
-        long salaryLessThan40000 = stuffList.stream()
-                .map(s -> s.getSalary())
-                .filter(s -> s < 40000)
-                .count();
-        System.out.println("Зарплата <40000: " + salaryLessThan40000);
-
-        long salaryGreaterThan40000LessThan80000 = stuffList.stream()
-                .map(s -> s.getSalary())
-                .filter(s -> 40000 <= s && s <= 80000)
-                .count();
-        System.out.println("Зарплата [40000,80000]: " + salaryGreaterThan40000LessThan80000);
-
-        long salaryGreatThan80000 = stuffList.stream()
-                .map(s -> s.getSalary())
-                .filter(s -> s > 80000)
-                .count();
-        System.out.println("Зарплата >80000: " + salaryGreatThan80000);
+        System.out.println(Arrays.toString(args));
     }
 }

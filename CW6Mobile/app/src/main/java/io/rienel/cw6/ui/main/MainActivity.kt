@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import dagger.hilt.android.AndroidEntryPoint
 import io.rienel.cw6.R
 import io.rienel.cw6.databinding.ActivityMainBinding
+import io.rienel.cw6.ui.data.DataViewActivity
 import io.rienel.cw6.ui.statistic.StatisticActivity
 import timber.log.Timber
 
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
 					).show()
 					Timber.i("Invalid IP")
 				}
+			}
+
+			viewDataButton.setOnClickListener {
+				val intent = Intent(this@MainActivity, DataViewActivity::class.java)
+				startActivity(intent)
 			}
 		}
 	}

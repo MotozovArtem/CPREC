@@ -1,5 +1,8 @@
 package io.rienel.cw6.api
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.PropertyNamingStrategies
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,6 +22,12 @@ class ApiModule {
 
 	@Provides
 	@Singleton
+	fun provideJacksonObjectMapper(): ObjectMapper = ObjectMapper()
+		.registerModule(JavaTimeModule())
+		.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+
+	@Provides
+	@Singleton
 	fun provideOkHttpClient(
 		dynamicHostInterceptor: DynamicHostInterceptor
 	): OkHttpClient = OkHttpClient.Builder()
@@ -27,11 +36,12 @@ class ApiModule {
 
 	@Provides
 	@Singleton
-	fun provideRetrofit(dynamicBaseUrl: OkHttpClient): Retrofit = Retrofit.Builder()
-		.client(dynamicBaseUrl)
-		.addConverterFactory(JacksonConverterFactory.create())
-		.baseUrl("http://localhost:8080")
-		.build()
+	fun provideRetrofit(dynamicBaseUrl: OkHttpClient, objectMapper: ObjectMapper): Retrofit =
+		Retrofit.Builder()
+			.client(dynamicBaseUrl)
+			.addConverterFactory(JacksonConverterFactory.create(objectMapper))
+			.baseUrl("http://localhost:8080")
+			.build()
 
 	@Provides
 	@Singleton

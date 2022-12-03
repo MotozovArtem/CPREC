@@ -20,4 +20,41 @@
     <string name="view_statistic">View statistic</string>
     <string name="dots">…</string>
     <string name="network_error_check_ip">Error while requesting data from server. Check IP.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="id">ID</string>
+    <string name="surname">Surname</string>
+    <string name="name">Name</string>
+    <string name="patronymic">Patronymic</string>
+    <string name="inn">INN</string>
+    <string name="sex">Sex</string>
+    <string name="passport_serial">Passport Serial</string>
+    <string name="phone">Phone</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="serial_number">Serial Number</string>
+    <string name="law_address">Law Address</string>
+    <string name="ending_date">Ending Date</string>
+    <string name="sign_date">Sign Date</string>
+    <string name="start_date">Start Date</string>
+    <string name="value">Value</string>
+
+    <string name="id_with_dots">ID:</string>
+    <string name="surname_with_dots">Surname:</string>
+    <string name="name_with_dots">Name:</string>
+    <string name="patronymic_with_dots">Patronymic:</string>
+    <string name="inn_with_dots">INN:</string>
+    <string name="sex_with_dots">Sex:</string>
+    <string name="passport_serial_with_dots">Passport Serial:</string>
+    <string name="phone_with_dots">Phone:</string>
+    <string name="birth_date_with_dots">Birth Date:</string>
+    <string name="serial_number_with_dots">Serial Number:</string>
+    <string name="law_address_with_dots">Law Address:</string>
+    <string name="ending_date_with_dots">Ending Date:</string>
+    <string name="sign_date_with_dots">Sign Date:</string>
+    <string name="start_date_with_dots">Start Date:</string>
+    <string name="value_with_dots">Value:</string>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="view_data">View data</string>
 </resources>

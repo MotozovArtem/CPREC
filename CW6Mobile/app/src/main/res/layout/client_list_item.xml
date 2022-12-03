@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/clientListItemIdTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/id_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clientListItemIdValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemIdTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clientListItemSurnameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/surname_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemIdTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemSurnameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemSurnameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemIdValue" />
+
+    <TextView
+        android:id="@+id/clientListItemNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/name_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemSurnameTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemNameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemSurnameValue" />
+
+    <TextView
+        android:id="@+id/clientListItemPatronymicTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/patronymic_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemNameTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemPatronymicValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemPatronymicTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemNameValue" />
+
+    <TextView
+        android:id="@+id/clientListItemSexTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/sex_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemPatronymicTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemSexValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemSexTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemPatronymicValue" />
+
+    <TextView
+        android:id="@+id/clientListItemInnTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/inn_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemSexTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemInnValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemInnTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemSexValue" />
+
+    <TextView
+        android:id="@+id/clientListItemPassportSerialTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/passport_serial_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemInnTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemPassportSerialValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemPassportSerialTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemInnValue" />
+
+    <TextView
+        android:id="@+id/clientListItemPhoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/phone_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemPassportSerialTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemPhoneValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemPhoneTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemPassportSerialValue" />
+</androidx.constraintlayout.widget.ConstraintLayout>

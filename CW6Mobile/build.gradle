@@ -9,3 +9,14 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    room_version = "2.4.3"
+    navigation_version = "2.5.3"
+    retrofit_version = "2.9.0"
+    lifecycle_version = "2.5.1"
+    hilt_version = "2.44"
+    fragment_version = "1.5.4"
+    timber_version = "5.0.1"
+    recycler_view_version = "1.2.1"
+}
