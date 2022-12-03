@@ -8,6 +8,16 @@ import java.util.Date;
  * @since 11/19/2022
  */
 public class Valute {
+
+	public enum Columns {
+		ID,
+		VALUE,
+		NOMINAL,
+		CURRENCY_NAME,
+		CURRENCY_CODE,
+		DATE
+	}
+
 	private String id;
 	private double value; // никогда не могут быть null (примитивный тип)
 	// private Double value; // null может быть (ссылочный)
@@ -74,5 +84,18 @@ public class Valute {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		// %s - String
+		// %d - integer
+		// %f - float and double
+		return String.format("%s %s Рублей = %s %s (%s)",
+				id != null && !id.isEmpty() ? id : "NULL",
+				value != 0.00 ? String.format("%.2f", value) : "NULL",
+				nominal != 0 ? Integer.toString(nominal) : "NULL",
+				currencyName != null && !currencyName.isEmpty() ? currencyName : "NULL",
+				currencyCode != null && !currencyCode.isEmpty() ? currencyCode : "NULL");
 	}
 }

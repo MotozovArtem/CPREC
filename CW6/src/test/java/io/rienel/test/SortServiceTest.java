@@ -22,12 +22,12 @@ public class SortServiceTest {
 	public void testSortServiceValuteByValueAscending() throws IOException {
 		ValuteLoader loader = new ValuteLoader();
 		List<Valute> valuteList = loader.loadValute("src/test/resources/currency_test.csv");
-		List<Valute> sortedValuteList = sortService.sortByColumn(valuteList, "value", true);
+		List<Valute> sortedValuteList = sortService.sortByColumn(valuteList, Valute.Columns.VALUE, true);
 		Assert.assertNotNull(sortedValuteList);
 		Assert.assertEquals(valuteList.size(), sortedValuteList.size());
 		Assert.assertNotSame(valuteList, sortedValuteList);
 		for (int i = 0; i < sortedValuteList.size() - 1; i++) {
-			Assert.assertTrue(sortedValuteList.get(i).getValue() < sortedValuteList.get(i + 1).getValue());
+			Assert.assertTrue(sortedValuteList.get(i).getValue() <= sortedValuteList.get(i + 1).getValue());
 		}
 	}
 
@@ -35,12 +35,12 @@ public class SortServiceTest {
 	public void testSortServiceValuteByValueDescending() throws IOException {
 		ValuteLoader loader = new ValuteLoader();
 		List<Valute> valuteList = loader.loadValute("src/test/resources/currency_test.csv");
-		List<Valute> sortedValuteList = sortService.sortByColumn(valuteList, "value", false);
+		List<Valute> sortedValuteList = sortService.sortByColumn(valuteList, Valute.Columns.VALUE, false);
 		Assert.assertNotNull(sortedValuteList);
 		Assert.assertEquals(valuteList.size(), sortedValuteList.size());
 		Assert.assertNotSame(valuteList, sortedValuteList);
 		for (int i = 0; i < sortedValuteList.size() - 1; i++) {
-			Assert.assertTrue(sortedValuteList.get(i).getValue() > sortedValuteList.get(i + 1).getValue());
+			Assert.assertTrue(sortedValuteList.get(i).getValue() >= sortedValuteList.get(i + 1).getValue());
 		}
 	}
 
@@ -48,13 +48,36 @@ public class SortServiceTest {
 	public void testSortServiceValuteByCodeAscending() throws IOException {
 		ValuteLoader loader = new ValuteLoader();
 		List<Valute> valuteList = loader.loadValute("src/test/resources/currency_test.csv");
-		List<Valute> sortedValuteList = sortService.sortByColumn(valuteList, "code", true);
+		List<Valute> sortedValuteList = sortService.sortByColumn(valuteList, Valute.Columns.CURRENCY_CODE, true);
 		Assert.assertNotNull(sortedValuteList);
 		Assert.assertEquals(valuteList.size(), sortedValuteList.size());
 		Assert.assertNotSame(valuteList, sortedValuteList);
 		for (int i = 0; i < sortedValuteList.size() - 1; i++) {
 			Assert.assertTrue(sortedValuteList.get(i).getCurrencyCode()
-					                  .compareTo(sortedValuteList.get(i + 1).getCurrencyCode()) < 0);
+					                  .compareTo(sortedValuteList.get(i + 1).getCurrencyCode()) <= 0);
+		}
+	}
+
+	@Test
+	public void testSortServiceValuteByDateAscending() throws IOException {
+		ValuteLoader loader = new ValuteLoader();
+		List<Valute> valuteList = loader.loadValute("src/test/resources/currency_test.csv");
+		List<Valute> sortedValuteList = sortService.sortByColumn(valuteList, Valute.Columns.DATE, true);
+		Assert.assertNotNull(sortedValuteList);
+		Assert.assertEquals(valuteList.size(), sortedValuteList.size());
+		Assert.assertNotSame(valuteList, sortedValuteList);
+		for (int i = 0; i < sortedValuteList.size() - 1; i++) {
+			Assert.assertTrue(sortedValuteList.get(i).getDate().getTime() <= sortedValuteList.get(i + 1).getDate().getTime());
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
