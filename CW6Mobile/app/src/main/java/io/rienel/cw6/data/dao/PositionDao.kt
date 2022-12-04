@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import io.rienel.cw6.data.model.Position
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PositionDao {
@@ -18,5 +19,5 @@ interface PositionDao {
 	fun deleteAll()
 
 	@Query("SELECT * FROM Position")
-	fun getAll(): List<Position>
+	fun getAll(): Flow<List<Position>>
 }

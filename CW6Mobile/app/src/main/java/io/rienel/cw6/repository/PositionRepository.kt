@@ -11,5 +11,5 @@ import javax.inject.Singleton
 class PositionRepository @Inject constructor(
 	private val positionDao: PositionDao
 ) {
-	val positions: Flow<Position> = positionDao.getAll().asFlow()
+	val positions: Flow<List<Position>> = positionDao.getAll()
 }

@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import io.rienel.cw6.data.model.Offer
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OfferDao {
@@ -18,5 +19,5 @@ interface OfferDao {
 	fun deleteAll()
 
 	@Query("SELECT * FROM Offer")
-	fun getAll(): List<Offer>
+	fun getAll(): Flow<List<Offer>>
 }

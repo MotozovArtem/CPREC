@@ -19,9 +19,6 @@ interface StuffDao {
 	fun deleteAll()
 
 	@Query("SELECT * FROM Stuff")
-	fun getAll(): List<Stuff>
-
-	@Query("SELECT * FROM Stuff")
-	fun getAllFlow(): Flow<List<Stuff>>
+	fun getAll(): Flow<List<Stuff>>
 
 }

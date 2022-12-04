@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import io.rienel.cw6.data.model.Office
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OfficeDao {
@@ -18,5 +19,5 @@ interface OfficeDao {
 	fun deleteAll()
 
 	@Query("SELECT * FROM Office")
-	fun getAll(): List<Office>
+	fun getAll(): Flow<List<Office>>
 }

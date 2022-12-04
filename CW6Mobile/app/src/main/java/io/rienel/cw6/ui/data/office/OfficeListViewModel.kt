@@ -1,7 +1,12 @@
 package io.rienel.cw6.ui.data.office
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class OfficeListViewModel : ViewModel() {
+@HiltViewModel
+class OfficeListViewModel @Inject constructor(
+
+): ViewModel() {
 	// TODO: Implement the ViewModel
 }

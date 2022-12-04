@@ -11,5 +11,5 @@ import javax.inject.Singleton
 class OfficeRepository @Inject constructor(
 	private val officeDao: OfficeDao
 ) {
-	val offices: Flow<Office> = officeDao.getAll().asFlow()
+	val offices: Flow<List<Office>> = officeDao.getAll()
 }
