@@ -27,12 +27,12 @@ class OfferListViewModel @Inject constructor(
 
 	fun getOffers() {
 		viewModelScope.launch {
-			Timber.i("Sendiong request for offer")
+			Timber.i("Sending request for offer")
 			val response: Response<List<OfferDto>>
 			try {
 				response = offerRepository.getOffers()
 			} catch (e: Exception) {
-				Timber.e(e, "Cannot obrain offer list")
+				Timber.e(e, "Cannot obtain offer list")
 				return@launch
 			}
 			val offers = response.body()

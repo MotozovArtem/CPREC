@@ -5,6 +5,11 @@
     <string name="client">Client</string>
     <string name="stuff">Stuff</string>
     <string name="position">Position</string>
+    <string name="office_with_dots">Office:</string>
+    <string name="offer_with_dots">Offer:</string>
+    <string name="client_with_dots">Client:</string>
+    <string name="stuff_with_dots">Stuff:</string>
+    <string name="position_with_dots">Position:</string>
     <string name="cw6_mobile_client">CW6 Mobile Client</string>
     <string name="new_offer">New Offer</string>
     <string name="offers_count">Offers count:</string>
@@ -37,6 +42,10 @@
     <string name="sign_date">Sign Date</string>
     <string name="start_date">Start Date</string>
     <string name="value">Value</string>
+    <string name="salary">Salary</string>
+    <string name="salary_multiplier">Salary multiplier</string>
+    <string name="address">Address</string>
+    <string name="cabinets_count">Cabinets count</string>
 
     <string name="id_with_dots">ID:</string>
     <string name="surname_with_dots">Surname:</string>
@@ -53,6 +62,10 @@
     <string name="sign_date_with_dots">Sign Date:</string>
     <string name="start_date_with_dots">Start Date:</string>
     <string name="value_with_dots">Value:</string>
+    <string name="salary_with_dots">Salary:</string>
+    <string name="salary_multiplier_with_dots">Salary multiplier:</string>
+    <string name="address_with_dots">Address:</string>
+    <string name="cabinets_count_with_dots">Cabinets count:</string>
 
     <string name="male">Male</string>
     <string name="female">Female</string>

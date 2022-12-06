@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.data.offer.OfferListFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/offerListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
-
+        tools:listitem="@layout/offer_list_item" />
 </FrameLayout>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.rienel.cw6.R
 import io.rienel.cw6.databinding.OfferListFragmentBinding
@@ -26,11 +27,26 @@ class OfferListFragment : Fragment(R.layout.offer_list_fragment) {
 		_binding = OfferListFragmentBinding.inflate(inflater, container, false)
 		val view = binding.root
 		val adapter = OfferListAdapter(mutableListOf())
+		binding.offerListRecyclerView.layoutManager = LinearLayoutManager(view.context)
+		binding.offerListRecyclerView.adapter = adapter
 		return view
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		offerListViewModel.getOffers()
+	}
+
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		offerListViewModel.offerList.observe(viewLifecycleOwner) { offerList ->
+			offerList?.let {
+				(binding.offerListRecyclerView.adapter as OfferListAdapter).updateOffers(it)
+			}
+		}
 	}
 }

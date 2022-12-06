@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.rienel.cw6.R
 import io.rienel.cw6.data.model.Client
+import io.rienel.cw6.ui.Bindable
 
 class ClientListAdapter(private val clients: MutableList<Client>) :
 	RecyclerView.Adapter<ClientListAdapter.ViewHolder>() {
@@ -16,7 +17,7 @@ class ClientListAdapter(private val clients: MutableList<Client>) :
 		var femaleString = "Female"
 	}
 
-	class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+	class ViewHolder(view: View) : RecyclerView.ViewHolder(view), Bindable<Client> {
 		val idTextView: TextView
 		val surnameTextView: TextView
 		val nameTextView: TextView
@@ -37,15 +38,15 @@ class ClientListAdapter(private val clients: MutableList<Client>) :
 			sexTextView = view.findViewById(R.id.clientListItemSexValue)
 		}
 
-		fun onBind(client: Client) {
-			idTextView.text = client.clientId
-			surnameTextView.text = client.surname
-			nameTextView.text = client.name
-			patronymicTextView.text = client.passportSerial
-			innTextView.text = client.inn
-			passportSerialTextView.text = client.passportSerial
-			phoneTextView.text = client.phone
-			sexTextView.text = client.sex
+		override fun onBind(obj: Client) {
+			idTextView.text = obj.clientId
+			surnameTextView.text = obj.surname
+			nameTextView.text = obj.name
+			patronymicTextView.text = obj.passportSerial
+			innTextView.text = obj.inn
+			passportSerialTextView.text = obj.passportSerial
+			phoneTextView.text = obj.phone
+			sexTextView.text = obj.sex
 		}
 	}
 

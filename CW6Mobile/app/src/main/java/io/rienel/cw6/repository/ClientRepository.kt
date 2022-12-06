@@ -14,8 +14,6 @@ class ClientRepository @Inject constructor(
 ) {
 	val clients: Flow<List<Client>> = clientDao.getAll()
 
-	fun saveClient(client: Client) = clientDao.insert(client)
-
 	fun saveAllClients(clients: List<Client>) = clientDao.insertAll(*clients.toTypedArray())
 
 	fun clear() = clientDao.deleteAll()

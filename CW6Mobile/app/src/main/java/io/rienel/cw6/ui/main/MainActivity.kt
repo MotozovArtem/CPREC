@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 				val intent = Intent(this@MainActivity, StatisticActivity::class.java)
 				startActivity(intent)
 			}
-
 			serverIpEditText.addTextChangedListener {
 				Timber.i("Server IP: %s", it.toString())
 				try {

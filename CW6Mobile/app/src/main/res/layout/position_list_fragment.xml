@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.data.position.PositionListFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/positionRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
-
+        tools:listitem="@layout/position_list_item" />
 </FrameLayout>
