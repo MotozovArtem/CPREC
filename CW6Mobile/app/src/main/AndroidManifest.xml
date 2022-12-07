@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.rienel.cw6">
+    package="io.rienel.cw6" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,28 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CW6Mobile"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
         <activity
-            android:name=".ui.data.DataViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.data.offer.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.statistic.StatisticActivity"
-            android:exported="false" />
-        <activity
-            android:name="io.rienel.cw6.ui.data.client.ClientListActivity"
+            android:name=".ui.offer.NewOfferActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.data.DataViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.statistic.StatisticActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

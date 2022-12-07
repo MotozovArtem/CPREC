@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.rienel.cw6.R
 import io.rienel.cw6.databinding.ActivityMainBinding
 import io.rienel.cw6.ui.data.DataViewActivity
+import io.rienel.cw6.ui.offer.NewOfferActivity
 import io.rienel.cw6.ui.statistic.StatisticActivity
 import timber.log.Timber
 
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity() {
 
 		with(binding) {
 			newOfferButton.setOnClickListener {
-
+				val intent = Intent(this@MainActivity, NewOfferActivity::class.java)
+				startActivity(intent)
 			}
 			viewStatisticButton.setOnClickListener {
 				val intent = Intent(this@MainActivity, StatisticActivity::class.java)
