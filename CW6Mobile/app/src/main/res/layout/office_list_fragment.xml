@@ -4,10 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.data.office.OfficeListFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/officeListRecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/officeListRefresher"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/office_list_item" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/officeListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/office_list_item" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>

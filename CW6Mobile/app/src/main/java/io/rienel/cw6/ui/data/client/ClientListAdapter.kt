@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.rienel.cw6.R
 import io.rienel.cw6.data.model.Client
-import io.rienel.cw6.ui.Bindable
+import io.rienel.cw6.ui.util.Bindable
 
 class ClientListAdapter(private val clients: MutableList<Client>) :
 	RecyclerView.Adapter<ClientListAdapter.ViewHolder>() {
@@ -46,7 +46,7 @@ class ClientListAdapter(private val clients: MutableList<Client>) :
 			innTextView.text = obj.inn
 			passportSerialTextView.text = obj.passportSerial
 			phoneTextView.text = obj.phone
-			sexTextView.text = obj.sex
+			sexTextView.text = if (obj.sex) femaleString else maleString
 		}
 	}
 

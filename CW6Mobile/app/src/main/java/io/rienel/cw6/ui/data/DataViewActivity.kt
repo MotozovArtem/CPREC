@@ -5,12 +5,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import io.rienel.cw6.R
 import io.rienel.cw6.databinding.ActivityDataViewBinding
 import io.rienel.cw6.ui.data.client.ClientListFragment
 import io.rienel.cw6.ui.data.offer.OfferListFragment
@@ -32,15 +29,12 @@ class DataViewActivity : AppCompatActivity() {
 		val view = binding.root
 		setContentView(view)
 
-//		supportFragmentManager.commit {
-//			setReorderingAllowed(true)
-//			add<ClientListFragment>(R.id.dataListFragmentContainer, null)
-//		}
 		binding.dataViewPager.adapter = DataViewPagerAdapter(this)
-		with(binding){
+		with(binding) {
 			TabLayoutMediator(allTabsLayout, dataViewPager) { tab, position ->
 				Timber.i("Swap to $position")
-				tab.text = getString(DataViewerViewModel.DataType.getDataType(position).textResource)
+				tab.text =
+					getString(DataViewerViewModel.DataType.getDataType(position).textResource)
 			}.attach()
 		}
 

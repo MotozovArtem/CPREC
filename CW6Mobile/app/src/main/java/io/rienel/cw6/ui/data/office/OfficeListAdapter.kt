@@ -7,21 +7,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.rienel.cw6.R
 import io.rienel.cw6.data.model.Office
-import io.rienel.cw6.ui.Bindable
-import java.time.format.DateTimeFormatter
+import io.rienel.cw6.ui.util.Bindable
 
 class OfficeListAdapter(private val offices: MutableList<Office>) :
 	RecyclerView.Adapter<OfficeListAdapter.ViewHolder>() {
 	class ViewHolder(view: View) : RecyclerView.ViewHolder(view), Bindable<Office> {
 		private val idTextView: TextView
-		private val nameTextView: TextView
 		private val addressTextView: TextView
 		private val lawAddressTextView: TextView
 		private val cabinetsCountTextView: TextView
 
 		init {
 			idTextView = view.findViewById(R.id.officeListItemIdValue)
-			nameTextView = view.findViewById(R.id.officeListItemNameValue)
 			addressTextView = view.findViewById(R.id.officeListItemAddressValue)
 			lawAddressTextView = view.findViewById(R.id.officeListItemLawAddressValue)
 			cabinetsCountTextView = view.findViewById(R.id.officeListItemCabinetsCountValue)
@@ -30,10 +27,9 @@ class OfficeListAdapter(private val offices: MutableList<Office>) :
 		override fun onBind(obj: Office) {
 			obj.let {
 				idTextView.text = it.officeId
-				nameTextView.text = it.name
 				addressTextView.text = it.address
 				lawAddressTextView.text = it.lawAddress
-				cabinetsCountTextView.text = it.cabinetsCount
+				cabinetsCountTextView.text = it.cabinetsCount.toString()
 			}
 		}
 	}

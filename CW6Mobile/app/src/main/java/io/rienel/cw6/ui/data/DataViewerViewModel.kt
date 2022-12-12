@@ -23,7 +23,7 @@ class DataViewerViewModel @Inject constructor(
 
 		companion object {
 			fun getDataType(position: Int): DataType {
-				for (value in DataType.values()) {
+				for (value in values()) {
 					if (value.position == position) {
 						return value
 					}

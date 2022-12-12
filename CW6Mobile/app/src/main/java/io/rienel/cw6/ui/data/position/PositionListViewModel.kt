@@ -1,6 +1,9 @@
 package io.rienel.cw6.ui.data.position
 
+import android.system.ErrnoException
+import android.system.OsConstants
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -9,6 +12,7 @@ import io.rienel.cw6.data.converter.toDomain
 import io.rienel.cw6.data.dto.PositionDto
 import io.rienel.cw6.data.model.Position
 import io.rienel.cw6.repository.PositionRepository
+import io.rienel.cw6.ui.util.ResponseResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -25,6 +29,10 @@ class PositionListViewModel @Inject constructor(
 	val positionList: LiveData<List<Position>> = positionRepository
 		.positions.asLiveData()
 
+	val responseResult: MutableLiveData<ResponseResult> by lazy {
+		MutableLiveData<ResponseResult>()
+	}
+
 	fun getPositions() {
 		viewModelScope.launch {
 			Timber.i("Requesting position information")
@@ -33,14 +41,22 @@ class PositionListViewModel @Inject constructor(
 				response = positionRepository.getPositions()
 			} catch (e: Exception) {
 				Timber.e(e, "Error while requesting position information")
+				val errnoException = e.cause?.cause as ErrnoException?
+				responseResult.value = when (errnoException?.errno) {
+					OsConstants.EHOSTUNREACH -> ResponseResult.HOST_IS_UNREACHABLE
+					OsConstants.ECONNREFUSED -> ResponseResult.CONNECTION_REFUSED
+					else -> ResponseResult.UNKNOWN
+				}
 				return@launch
 			}
 			val positions = response.body()
 			if (positions == null) {
 				Timber.i("Positions DTO: empty response")
+				responseResult.value = ResponseResult.EMPTY_RESPONSE
 				return@launch
 			}
 			Timber.i("Received positions $positions")
+			responseResult.value = ResponseResult.OK
 			withContext(Dispatchers.IO) {
 				synchronized(positionRepository) {
 					positionRepository.clear()

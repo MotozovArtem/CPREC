@@ -16,13 +16,14 @@ import io.rienel.cw6.data.model.Stuff
 import io.rienel.cw6.data.util.LocalDateConverter
 
 @Database(
+	version = 1,
 	entities = [
 		Client::class,
 		Offer::class,
 		Office::class,
 		Stuff::class,
 		Position::class
-	], version = 1
+	]
 )
 @TypeConverters(LocalDateConverter::class)
 abstract class AppDatabase : RoomDatabase() {

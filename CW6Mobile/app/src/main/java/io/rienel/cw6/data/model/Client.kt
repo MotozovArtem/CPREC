@@ -11,7 +11,7 @@ data class Client(
 	@ColumnInfo(name = "surname") val surname: String,
 	@ColumnInfo(name = "name") val name: String,
 	@ColumnInfo(name = "patronymic") val patronymic: String,
-	@ColumnInfo(name = "sex") val sex: String,
+	@ColumnInfo(name = "sex") val sex: Boolean,
 	@ColumnInfo(name = "birthDate") val birthDate: LocalDate,
 	@ColumnInfo(name = "inn") val inn: String,
 	@ColumnInfo(name = "passportSerial") val passportSerial: String,

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "3f5c492a5fe6825cd6631172f14c86e4",
+    "identityHash": "2f596a0dc6975d9069d2f130b2aacb42",
     "entities": [
       {
         "tableName": "Client",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`clientId` TEXT NOT NULL, `surname` TEXT NOT NULL, `name` TEXT NOT NULL, `patronymic` TEXT NOT NULL, `sex` TEXT NOT NULL, `birthDate` INTEGER NOT NULL, `inn` TEXT NOT NULL, `passportSerial` TEXT NOT NULL, `phone` TEXT NOT NULL, PRIMARY KEY(`clientId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`clientId` TEXT NOT NULL, `surname` TEXT NOT NULL, `name` TEXT NOT NULL, `patronymic` TEXT NOT NULL, `sex` INTEGER NOT NULL, `birthDate` INTEGER NOT NULL, `inn` TEXT NOT NULL, `passportSerial` TEXT NOT NULL, `phone` TEXT NOT NULL, PRIMARY KEY(`clientId`))",
         "fields": [
           {
             "fieldPath": "clientId",
@@ -35,7 +35,7 @@
           {
             "fieldPath": "sex",
             "columnName": "sex",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -136,17 +136,11 @@
       },
       {
         "tableName": "Office",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`officeId` TEXT NOT NULL, `name` TEXT NOT NULL, `address` TEXT NOT NULL, `lawAddress` TEXT NOT NULL, `cabinetsCount` TEXT NOT NULL, PRIMARY KEY(`officeId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`officeId` TEXT NOT NULL, `address` TEXT NOT NULL, `lawAddress` TEXT NOT NULL, `cabinetsCount` INTEGER NOT NULL, PRIMARY KEY(`officeId`))",
         "fields": [
           {
             "fieldPath": "officeId",
             "columnName": "officeId",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "name",
-            "columnName": "name",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -165,7 +159,7 @@
           {
             "fieldPath": "cabinetsCount",
             "columnName": "cabinetsCount",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -180,7 +174,7 @@
       },
       {
         "tableName": "Stuff",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stuffId` TEXT NOT NULL, `surname` TEXT NOT NULL, `name` TEXT NOT NULL, `patronymic` TEXT NOT NULL, `sex` TEXT NOT NULL, `birthDate` INTEGER NOT NULL, `salaryMultiplier` TEXT NOT NULL, `stuffPositionId` TEXT NOT NULL, PRIMARY KEY(`stuffId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stuffId` TEXT NOT NULL, `surname` TEXT NOT NULL, `name` TEXT NOT NULL, `patronymic` TEXT NOT NULL, `sex` TEXT NOT NULL, `birthDate` INTEGER NOT NULL, `salaryMultiplier` REAL NOT NULL, `stuffPositionId` TEXT NOT NULL, PRIMARY KEY(`stuffId`))",
         "fields": [
           {
             "fieldPath": "stuffId",
@@ -221,7 +215,7 @@
           {
             "fieldPath": "salaryMultiplier",
             "columnName": "salaryMultiplier",
-            "affinity": "TEXT",
+            "affinity": "REAL",
             "notNull": true
           },
           {
@@ -276,7 +270,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3f5c492a5fe6825cd6631172f14c86e4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2f596a0dc6975d9069d2f130b2aacb42')"
     ]
   }
 }

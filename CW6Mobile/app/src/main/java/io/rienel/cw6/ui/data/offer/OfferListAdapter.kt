@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.rienel.cw6.R
 import io.rienel.cw6.data.model.Offer
-import io.rienel.cw6.ui.Bindable
+import io.rienel.cw6.ui.util.Bindable
 import java.time.format.DateTimeFormatter
 
 class OfferListAdapter(private val offers: MutableList<Offer>) :
