@@ -18,9 +18,6 @@ public class Office {
 	@Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
 
-	@Column(name = "name")
-	private String name;
-
 	@Column(name = "address")
 	private String address;
 
@@ -33,9 +30,8 @@ public class Office {
 	public Office() {
 	}
 
-	public Office(UUID id, String name, String address, String lawAddress, Integer cabinetsCount) {
+	public Office(UUID id, String address, String lawAddress, Integer cabinetsCount) {
 		this.id = id;
-		this.name = name;
 		this.address = address;
 		this.lawAddress = lawAddress;
 		this.cabinetsCount = cabinetsCount;
@@ -47,14 +43,6 @@ public class Office {
 
 	public void setId(UUID id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getAddress() {
@@ -83,18 +71,12 @@ public class Office {
 
 	public class Builder {
 		private UUID id;
-		private String name;
 		private String address;
 		private String lawAddress;
 		private Integer cabinetsCount;
 
 		public Builder setId(UUID id) {
 			this.id = id;
-			return this;
-		}
-
-		public Builder setName(String name) {
-			this.name = name;
 			return this;
 		}
 
@@ -114,7 +96,7 @@ public class Office {
 		}
 
 		public Office createOffice() {
-			return new Office(id, name, address, lawAddress, cabinetsCount);
+			return new Office(id, address, lawAddress, cabinetsCount);
 		}
 	}
 }

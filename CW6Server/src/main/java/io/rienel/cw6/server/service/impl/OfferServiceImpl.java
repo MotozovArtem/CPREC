@@ -1,7 +1,6 @@
 package io.rienel.cw6.server.service.impl;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import io.rienel.cw6.server.model.Client;
@@ -45,7 +44,9 @@ public class OfferServiceImpl implements OfferService {
 				.setSignDate(LocalDate.now())
 				.setStartDate(startDate)
 				.setEndingDate(endingDate)
-				.setOffice(officeRepository.findByName("Head Leasing Office"))
+				.setOffice(officeRepository
+						.findById(UUID.fromString("a68062fe-bac2-4408-af87-85ebd882d7a4"))
+						.orElseThrow())
 				.build();
 		return offerRepository.save(newOffer);
 	}
