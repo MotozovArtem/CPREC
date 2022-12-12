@@ -13,6 +13,6 @@ data class Stuff(
 	@ColumnInfo(name = "patronymic") val patronymic: String,
 	@ColumnInfo(name = "sex") val sex: String,
 	@ColumnInfo(name = "birthDate") val birthDate: LocalDate,
-	@ColumnInfo(name = "salaryMultiplier") val salaryMultiplier: String,
+	@ColumnInfo(name = "salaryMultiplier") val salaryMultiplier: Double,
 	@ColumnInfo(name = "stuffPositionId") val positionId: String,
 )

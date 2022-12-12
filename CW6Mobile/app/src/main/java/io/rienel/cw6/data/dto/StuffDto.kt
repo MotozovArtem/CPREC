@@ -9,6 +9,6 @@ data class StuffDto(
 	val patronymic: String? = null,
 	val sex: String? = null,
 	val birthDate: LocalDate? = null,
-	val salaryMultiplier: String? = null,
+	val salaryMultiplier: Double? = null,
 	val position: PositionDto? = null,
 )

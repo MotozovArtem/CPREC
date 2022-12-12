@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CW6Mobile</string>
+    <string name="app_name">Wroom Wroom Leasing</string>
     <string name="office">Office</string>
     <string name="offer">Offer</string>
     <string name="client">Client</string>
@@ -25,8 +25,6 @@
     <string name="view_statistic">View statistic</string>
     <string name="dots">…</string>
     <string name="network_error_check_ip">Error while requesting data from server. Check IP.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="id">ID</string>
     <string name="surname">Surname</string>
     <string name="name">Name</string>
@@ -81,5 +79,13 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="create_new_offer">Create new offer</string>
     <string name="save">Save</string>
+
+    <string name="error">Error</string>
+    <string name="error_with_dots">Error:</string>
+    <string name="empty_response">Received empty response from server! Check server logs!</string>
+    <string name="host_is_unreachable">Host is unreachable! Check IP or network!</string>
+    <string name="connection_refused">Connection refused! Check IP or server!</string>
+    <string name="ok">Response OK</string>
+    <string name="unknown_network_error">Unknown network error! Check logs!</string>
 
 </resources>

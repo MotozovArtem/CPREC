@@ -48,15 +48,4 @@
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/all_tabs_layout" />
-
-<!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:id="@+id/dataListFragmentContainer"-->
-<!--        android:name="io.rienel.cw6.ui.data.client.ClientListFragment"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/all_tabs_layout"-->
-<!--        tools:layout="@layout/client_list_fragment" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

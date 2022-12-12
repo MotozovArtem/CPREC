@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +30,9 @@ class OfficeListFragment : Fragment(R.layout.office_list_fragment) {
 		val adapter = OfficeListAdapter(mutableListOf())
 		binding.officeListRecyclerView.layoutManager = LinearLayoutManager(view.context)
 		binding.officeListRecyclerView.adapter = adapter
+		binding.officeListRefresher.setOnRefreshListener {
+			officeListViewModel.getOffices()
+		}
 		return view
 	}
 
@@ -37,12 +41,12 @@ class OfficeListFragment : Fragment(R.layout.office_list_fragment) {
 		_binding = null
 	}
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		officeListViewModel.getOffices()
-	}
-
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		officeListViewModel.getOffices()
+		officeListViewModel.responseResult.observe(viewLifecycleOwner) {
+			Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+			binding.officeListRefresher.isRefreshing = false
+		}
 		officeListViewModel.officesList.observe(viewLifecycleOwner) { officesList ->
 			officesList?.let {
 				(binding.officeListRecyclerView.adapter as OfficeListAdapter).updateOffices(it)

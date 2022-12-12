@@ -37,7 +37,6 @@ fun OfferDto.toDomain() = Offer(
 
 fun OfficeDto.toDomain() = Office(
 	officeId = this.id!!,
-	name = this.name!!,
 	address = this.address!!,
 	lawAddress = this.lawAddress!!,
 	cabinetsCount = this.cabinetsCount!!,

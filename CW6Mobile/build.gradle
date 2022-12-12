@@ -10,7 +10,9 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+
 ext {
+    kotlin_version = "1.5.1"
     room_version = "2.4.3"
     navigation_version = "2.5.3"
     retrofit_version = "2.9.0"

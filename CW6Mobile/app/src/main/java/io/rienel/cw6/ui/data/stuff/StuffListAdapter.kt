@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.rienel.cw6.R
 import io.rienel.cw6.data.model.Stuff
-import io.rienel.cw6.ui.Bindable
+import io.rienel.cw6.ui.util.Bindable
 import java.time.format.DateTimeFormatter
 
 class StuffListAdapter(private val stuffs: MutableList<Stuff>) :
@@ -47,7 +47,7 @@ class StuffListAdapter(private val stuffs: MutableList<Stuff>) :
 			patronymicTextView.text = obj.patronymic
 			sexTextView.text = obj.sex
 			birthDateTextView.text = obj.birthDate.format(DateTimeFormatter.ISO_DATE)
-			salaryMultiplierTextView.text = obj.salaryMultiplier
+			salaryMultiplierTextView.text = String.format("%.2f", obj.salaryMultiplier)
 			positionTextView.text = obj.positionId
 		}
 	}

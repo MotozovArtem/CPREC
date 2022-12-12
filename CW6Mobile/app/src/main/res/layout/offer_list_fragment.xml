@@ -4,10 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.data.offer.OfferListFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/offerListRecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/offerListRefresher"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/offer_list_item" />
+        android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/offerListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/offer_list_item" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </FrameLayout>
