@@ -27,3 +27,15 @@ tasks.withType<KotlinCompile> {
 application {
 	mainClass.set("io.rienel.MainKt")
 }
+
+
+
+
+
+
+
+
+
+
+
+

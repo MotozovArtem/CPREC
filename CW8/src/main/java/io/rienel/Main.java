@@ -8,5 +8,7 @@ package io.rienel;
 public class Main {
 	public static void main(String[] args) {
 		MainKt.main();
+		Person a = new Person();
+		System.out.println(a.component1());
 	}
 }
