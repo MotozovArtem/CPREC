@@ -14,7 +14,7 @@ object Database {
 
 	const val JDBC_URL = "jdbc:sqlite:db/storage.db"
 
-	private val SCHEMA_SQL: String = """
+	private val SCHEMA_SQL = """
 			CREATE TABLE IF NOT EXISTS currency_exchange (
 			    id INTEGER PRIMARY KEY AUTOINCREMENT,
 			    "value" REAL NOT NULL,
@@ -27,6 +27,7 @@ object Database {
 	val connection: Connection
 
 	init {
+		val a = SCHEMA_SQL
 		prepareDirectory()
 		connection = DriverManager.getConnection(JDBC_URL)
 		initDb()

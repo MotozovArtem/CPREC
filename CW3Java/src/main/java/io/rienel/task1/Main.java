@@ -4,15 +4,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
-
-import io.rienel.task1.model.Client;
-import io.rienel.task1.model.Offer;
-import io.rienel.task1.model.Position;
-import io.rienel.task1.model.Stuff;
+import java.util.concurrent.ExecutionException;
 
 public class Main {
 
@@ -70,28 +71,35 @@ public class Main {
 	}
 	//endregion
 
-	public static void main(String[] args) throws IOException {
-		OfferService service = LeasingOfferService.getInstance();
-		Client client = new Client.Builder()
-				.setId(UUID.randomUUID())
-				.setSurname("Мотозов")
-				.setName("Артем")
-				.setPatronymic("Владимирович")
-				.setPhone("88005553535")
-				.setSex(false)
-				.setPassportSerial("8888444444")
-				.setBirthDate(LocalDate.of(1998, 2, 24))
-				.build();
-		Stuff stuff = new Stuff.Builder()
-				.setId(UUID.randomUUID())
-				.setSex(false)
-				.setSurname("Иванов")
-				.setName("Иван")
-				.setPatronymic("Иванович")
-				.setSalaryMultiplier(1.00)
-				.setPosition(new Position(UUID.randomUUID(), "Менеджер", 100000))
-				.build();
-		Offer offer = service.signNewOffer(LocalDate.now(), LocalDate.now().plusYears(1L), client, stuff);
-		System.out.println(offer);
+	public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
+		LocalDateTime december152022_18_00_00 = LocalDateTime.of(2022, Month.DECEMBER, 15, 18, 0, 0);
+		System.out.println(december152022_18_00_00);
+		ZonedDateTime december121984_15_12_13_UTC = ZonedDateTime.of(1984, Month.DECEMBER.getValue(), 12,
+				15, 12, 13, 0, ZoneOffset.UTC);
+		System.out.println(december121984_15_12_13_UTC);
+		ZonedDateTime december152022_18_00_00_UTC = ZonedDateTime.of(december152022_18_00_00, ZoneOffset.UTC);
+		System.out.println(december152022_18_00_00_UTC);
+//		OfferService service = LeasingOfferService.getInstance();
+//		Client client = new Client.Builder()
+//				.setId(UUID.randomUUID())
+//				.setSurname("Мотозов")
+//				.setName("Артем")
+//				.setPatronymic("Владимирович")
+//				.setPhone("88005553535")
+//				.setSex(false)
+//				.setPassportSerial("8888444444")
+//				.setBirthDate(LocalDate.of(1998, 2, 24))
+//				.build();
+//		Stuff stuff = new Stuff.Builder()
+//				.setId(UUID.randomUUID())
+//				.setSex(false)
+//				.setSurname("Иванов")
+//				.setName("Иван")
+//				.setPatronymic("Иванович")
+//				.setSalaryMultiplier(1.00)
+//				.setPosition(new Position(UUID.randomUUID(), "Менеджер", 100000))
+//				.build();
+//		Offer offer = service.signNewOffer(LocalDate.now(), LocalDate.now().plusYears(1L), client, stuff);
+//		System.out.println(offer);
 	}
 }
