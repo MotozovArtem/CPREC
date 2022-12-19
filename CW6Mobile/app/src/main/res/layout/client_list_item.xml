@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/clientListItemIdTextView"
@@ -154,4 +154,23 @@
         android:text="@string/value"
         app:layout_constraintStart_toEndOf="@+id/clientListItemPhoneTextView"
         app:layout_constraintTop_toBottomOf="@+id/clientListItemPassportSerialValue" />
+
+    <TextView
+        android:id="@+id/clientListItemBirthDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/birth_date_with_dots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemPhoneTextView" />
+
+    <TextView
+        android:id="@+id/clientListItemBirthDateValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        app:layout_constraintStart_toEndOf="@+id/clientListItemBirthDateTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clientListItemPhoneValue" />
 </androidx.constraintlayout.widget.ConstraintLayout>

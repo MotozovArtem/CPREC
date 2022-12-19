@@ -7,7 +7,7 @@ data class StuffDto(
 	val surname: String? = null,
 	val name: String? = null,
 	val patronymic: String? = null,
-	val sex: String? = null,
+	val sex: Boolean? = null,
 	val birthDate: LocalDate? = null,
 	val salaryMultiplier: Double? = null,
 	val position: PositionDto? = null,
