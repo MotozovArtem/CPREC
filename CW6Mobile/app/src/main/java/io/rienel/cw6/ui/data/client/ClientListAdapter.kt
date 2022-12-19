@@ -42,7 +42,7 @@ class ClientListAdapter(private val clients: MutableList<Client>) :
 			idTextView.text = obj.clientId
 			surnameTextView.text = obj.surname
 			nameTextView.text = obj.name
-			patronymicTextView.text = obj.passportSerial
+			patronymicTextView.text = obj.patronymic
 			innTextView.text = obj.inn
 			passportSerialTextView.text = obj.passportSerial
 			phoneTextView.text = obj.phone
