@@ -45,7 +45,7 @@ class StuffListAdapter(private val stuffs: MutableList<Stuff>) :
 			surnameTextView.text = obj.surname
 			nameTextView.text = obj.name
 			patronymicTextView.text = obj.patronymic
-			sexTextView.text = obj.sex
+			sexTextView.text = if (obj.sex) femaleString else maleString
 			birthDateTextView.text = obj.birthDate.format(DateTimeFormatter.ISO_DATE)
 			salaryMultiplierTextView.text = String.format("%.2f", obj.salaryMultiplier)
 			positionTextView.text = obj.positionId

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2f596a0dc6975d9069d2f130b2aacb42",
+    "identityHash": "df330e134912d39d7850a8a2bf5f2280",
     "entities": [
       {
         "tableName": "Client",
@@ -174,7 +174,7 @@
       },
       {
         "tableName": "Stuff",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stuffId` TEXT NOT NULL, `surname` TEXT NOT NULL, `name` TEXT NOT NULL, `patronymic` TEXT NOT NULL, `sex` TEXT NOT NULL, `birthDate` INTEGER NOT NULL, `salaryMultiplier` REAL NOT NULL, `stuffPositionId` TEXT NOT NULL, PRIMARY KEY(`stuffId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stuffId` TEXT NOT NULL, `surname` TEXT NOT NULL, `name` TEXT NOT NULL, `patronymic` TEXT NOT NULL, `sex` INTEGER NOT NULL, `birthDate` INTEGER NOT NULL, `salaryMultiplier` REAL NOT NULL, `stuffPositionId` TEXT NOT NULL, PRIMARY KEY(`stuffId`))",
         "fields": [
           {
             "fieldPath": "stuffId",
@@ -203,7 +203,7 @@
           {
             "fieldPath": "sex",
             "columnName": "sex",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -270,7 +270,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2f596a0dc6975d9069d2f130b2aacb42')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'df330e134912d39d7850a8a2bf5f2280')"
     ]
   }
 }

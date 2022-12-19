@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import io.rienel.cw6.R
 import io.rienel.cw6.data.model.Client
 import io.rienel.cw6.ui.util.Bindable
+import java.time.format.DateTimeFormatter
 
 class ClientListAdapter(private val clients: MutableList<Client>) :
 	RecyclerView.Adapter<ClientListAdapter.ViewHolder>() {
@@ -26,6 +27,7 @@ class ClientListAdapter(private val clients: MutableList<Client>) :
 		val passportSerialTextView: TextView
 		val phoneTextView: TextView
 		val sexTextView: TextView
+		val birthDateTextView:  TextView
 
 		init {
 			idTextView = view.findViewById(R.id.clientListItemIdValue)
@@ -36,6 +38,7 @@ class ClientListAdapter(private val clients: MutableList<Client>) :
 			passportSerialTextView = view.findViewById(R.id.clientListItemPassportSerialValue)
 			phoneTextView = view.findViewById(R.id.clientListItemPhoneValue)
 			sexTextView = view.findViewById(R.id.clientListItemSexValue)
+			birthDateTextView = view.findViewById(R.id.clientListItemBirthDateValue)
 		}
 
 		override fun onBind(obj: Client) {
@@ -47,6 +50,7 @@ class ClientListAdapter(private val clients: MutableList<Client>) :
 			passportSerialTextView.text = obj.passportSerial
 			phoneTextView.text = obj.phone
 			sexTextView.text = if (obj.sex) femaleString else maleString
+			birthDateTextView.text = obj.birthDate.format(DateTimeFormatter.ISO_DATE)
 		}
 	}
 
