@@ -36,7 +36,7 @@ Android application. Mobile client to CW6Server.
 Spring project (Gradle). DB: PostgreSQL. REST service. CASE-application: Visual Paradigm (documentation).
 
 ## CW8
-Gradle (Kotlin DSL) prject. Kotlin introduction.
+Gradle (Kotlin DSL) project. Kotlin introduction.
 
 ## HW1
 Class diagramm implementation. Java and Kotlin.
